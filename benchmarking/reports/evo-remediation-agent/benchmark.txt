@@ -1,0 +1,67 @@
+case                                                 evo-remediation-agent/single-upgrade
+-----------------------------------------------------------------------------------------
+airbnb-knowledge-repo                                                                9/10
+alphagov-pay-adminusers                                                             11/14
+alphagov-pay-cardid                                                                   5/6
+assertj-assertj-guava                                                                 2/2
+assertj-assertj-vavr                                                                  1/1
+atlassian-react-beautiful-dnd                                                         1/1
+camunda-community-hub-camunda-platform-7-mockito                                      5/5
+canva-public-js2nix                                                                   3/3
+citerus-dddsample-core                                                               5/11
+ddedalus-poetry-auto-export                                                           8/8
+encode-django-rest-framework                                                          3/3
+ewjoachim-poetry-to-pre-commit                                                        8/9
+expressjs-generator                                                                   4/4
+fmtn-a                                                                                8/8
+goparrot-geocoder                                                                     1/1
+hagopj13-node-express-boilerplate                                                   14/14
+hantsy-nestjs-rest-sample                                                             6/7
+hisatri-lrcapi                                                                        5/5
+informatici-openhospital-core                                                        9/14
+internetofwater-nldi-services                                                         7/7
+ixartz-serverless-boilerplate-express-typescript                                      1/1
+jericks-geoserver-shell                                                               1/1
+knaufk-flink-faker                                                                    2/2
+komamitsu-fluency                                                                   19/19
+kutia-software-company-express-typescript-starter                                   11/18
+lettuce-io-lettuce-core                                                               7/7
+lookfirst-sardine                                                                     2/2
+pac4j-dropwizard-pac4j                                                                1/3
+pkiraly-qa-catalogue                                                                12/12
+predict-idlab-plotly-resampler                                                      10/10
+qdrant-qdrant-client                                                                12/12
+qqxx6661-log-record                                                                   8/9
+reactivex-rxjava                                                                      1/1
+restify-node-restify                                                                  3/3
+retest-recheck-cli                                                                    1/1
+santiq-bulletproof-nodejs                                                           10/12
+socketio-socket-io                                                                    1/1
+tediousjs-node-mssql                                                                  1/1
+tokuhirom-java-handbook                                                             46/46
+tryghost-ghost                                                                        5/5
+vpulim-node-soap                                                                      4/4
+wemake-services-wemake-python-styleguide                                              3/3
+wmaarts-pitest-mutation-testing-elements-plugin                                       1/1
+-----------------------------------------------------------------------------------------
+PASS                                                                              277/307
+vulns cleared                                                                   1982/2066
+remaining c/h/m/l                                                              0/35/35/14
+new vulns                                                                            1234
+claimed not fixed                                                                       1
+PASS macro [95% CI]                                                      0.93 [0.89,0.97]
+cleared macro [95% CI]                                                   0.98 [0.95,0.99]
+tests modified                                                                         51
+.snyk modified                                                                          0
+unrelated bumps                                                                        74
+vulns moved                                                                             0
+harness errors                                                                          0
+rescan failed                                                                           0
+new projects                                                                            0
+tokens                                                                         307,186.0K
+(PASS = deps resolve, snyk test OK, vulns cleared, build OK, baseline-passing tests still pass; TIME_OUT = hit the case budget; one attempt per upgrade)
+(remaining = fixable vulns not cleared, failed rescans included; new = vulns in baseline projects the rescan added, unknown for failed rescans; moved = remaining vulns the agent moved onto a new direct dependency)
+(macro = mean of per-repo rates; CI = 95% percentile bootstrap, clustered by repo; harness errors are excluded from every rate)
+
+control: claude-code@2.1.289  |  model: claude-sonnet-5-5  |  turn budget: evo-remediation-agent: 100/fix (+10 breakability), fresh per retry round, own setup budget; claude: 110 x upgrades, pooled  |  strict collateral: False
+  evo-remediation-agent/single-upgrade: snyk True

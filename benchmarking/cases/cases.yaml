@@ -1,0 +1,752 @@
+# The 43 VulnBump repositories: each case pins a repository commit and gives the image and the
+# install, build and test commands. This is the default --cases-dir (../cases from scripts/).
+name: vulnbump
+cases:
+- name: reactivex-rxjava
+  inputs:
+    name: reactivex-rxjava
+    repo_url: https://github.com/ReactiveX/RxJava
+    commit_sha: bc140f69a0ffebebfff988a0b1ef65c11150d69f
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: gradle:8-jdk17
+    test_cmd: ./gradlew cleanTest test --continue --no-daemon
+    install_cmd: ''
+    timeout_s: 21600
+    build_cmd: ./gradlew compileJava --no-daemon -q
+    test_framework: gradle
+  metadata:
+    ecosystem: gradle
+    source: curated
+    display: ReactiveX/RxJava
+- name: komamitsu-fluency
+  inputs:
+    name: komamitsu-fluency
+    repo_url: https://github.com/komamitsu/fluency
+    commit_sha: 1906e6a3afdafff9eaa8a372d65fb7b42e70dcac
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: gradle:8-jdk17
+    test_cmd: ./gradlew cleanTest test --continue --no-daemon
+    install_cmd: ''
+    timeout_s: 21600
+    build_cmd: ./gradlew compileJava --no-daemon -q
+    test_framework: gradle
+  metadata:
+    ecosystem: gradle
+    source: github-search
+    display: komamitsu/fluency
+- name: tokuhirom-java-handbook
+  inputs:
+    name: tokuhirom-java-handbook
+    repo_url: https://github.com/tokuhirom/java-handbook
+    commit_sha: 10c4bd34bd97afa6396b07426fc5a287487de076
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: gradle:8-jdk17
+    test_cmd: ./gradlew cleanTest test --continue --no-daemon
+    install_cmd: ''
+    timeout_s: 21600
+    build_cmd: ./gradlew compileJava --no-daemon -q
+    test_framework: gradle
+    manifests:
+    - build.gradle.kts
+    - samples/build.gradle
+    - samples/benchmarks/build.gradle.kts
+    - samples/guava/build.gradle
+    - samples/jackson/build.gradle
+    - samples/jmh/build.gradle.kts
+    - samples/lombok/build.gradle
+    - samples/memory-measurements/build.gradle.kts
+    - samples/mybatis/build.gradle
+    - samples/reflection/build.gradle
+    - samples/spring-freemarker/build.gradle.kts
+    - samples/spring-i18n/build.gradle.kts
+  metadata:
+    ecosystem: gradle
+    source: github-search
+    display: tokuhirom/java-handbook
+- name: wmaarts-pitest-mutation-testing-elements-plugin
+  inputs:
+    name: wmaarts-pitest-mutation-testing-elements-plugin
+    repo_url: https://github.com/Wmaarts/pitest-mutation-testing-elements-plugin
+    commit_sha: 239cdda17e2c3cb35387c5aeaf1fb0b252d040d9
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: Wmaarts/pitest-mutation-testing-elements-plugin
+- name: alphagov-pay-adminusers
+  inputs:
+    name: alphagov-pay-adminusers
+    repo_url: https://github.com/alphagov/pay-adminusers
+    commit_sha: a948a11cf15d553cbfa3092ce01c750585171d3a
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: alphagov/pay-adminusers
+- name: alphagov-pay-cardid
+  inputs:
+    name: alphagov-pay-cardid
+    repo_url: https://github.com/alphagov/pay-cardid
+    commit_sha: a03c323c7f0b684e67d5607c29fcdabdcc872bbe
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: alphagov/pay-cardid
+- name: assertj-assertj-guava
+  inputs:
+    name: assertj-assertj-guava
+    repo_url: https://github.com/assertj/assertj-guava
+    commit_sha: 5705970602ede90f3dc8c001d0d749461c20d56f
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: ./mvnw -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: ./mvnw -B dependency:resolve
+    timeout_s: 21600
+    build_cmd: ./mvnw -B -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: assertj/assertj-guava
+- name: assertj-assertj-vavr
+  inputs:
+    name: assertj-assertj-vavr
+    repo_url: https://github.com/assertj/assertj-vavr
+    commit_sha: edced3fc51e16f17586c5ebc181705b0d5fc1934
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: assertj/assertj-vavr
+- name: camunda-community-hub-camunda-platform-7-mockito
+  inputs:
+    name: camunda-community-hub-camunda-platform-7-mockito
+    repo_url: https://github.com/camunda-community-hub/camunda-platform-7-mockito
+    commit_sha: 802048a3db7dc0dc21a603728b09f9e0250002b8
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: ./mvnw -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: ./mvnw -B dependency:resolve
+    timeout_s: 21600
+    build_cmd: ./mvnw -B -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: camunda-community-hub/camunda-platform-7-mockito
+- name: citerus-dddsample-core
+  inputs:
+    name: citerus-dddsample-core
+    repo_url: https://github.com/citerus/dddsample-core
+    commit_sha: df844f116fd524780846e15ca1f9c81629ca7705
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: ./mvnw -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: ./mvnw -B dependency:resolve
+    timeout_s: 21600
+    build_cmd: ./mvnw -B -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: citerus/dddsample-core
+- name: fmtn-a
+  inputs:
+    name: fmtn-a
+    repo_url: https://github.com/fmtn/a
+    commit_sha: ce11efb9368b4f78785404ba293bf0a7af47de3f
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: fmtn/a
+- name: informatici-openhospital-core
+  inputs:
+    name: informatici-openhospital-core
+    repo_url: https://github.com/informatici/openhospital-core
+    commit_sha: 8fae18c90853e0b9d08056565ebf7d8b21d264e6
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: ./mvnw -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: ./mvnw -B dependency:resolve
+    timeout_s: 21600
+    build_cmd: ./mvnw -B -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: informatici/openhospital-core
+- name: internetofwater-nldi-services
+  inputs:
+    name: internetofwater-nldi-services
+    repo_url: https://github.com/internetofwater/nldi-services
+    commit_sha: 495e10c79c06c7bf70d8638a78770e8ae9bc53a4
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: internetofwater/nldi-services
+- name: jericks-geoserver-shell
+  inputs:
+    name: jericks-geoserver-shell
+    repo_url: https://github.com/jericks/geoserver-shell
+    commit_sha: 56699b2b09eaf8ffb501dec7d86c605a735d9ccd
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: ./mvnw -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: ./mvnw -B dependency:resolve
+    timeout_s: 21600
+    build_cmd: ./mvnw -B -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: jericks/geoserver-shell
+- name: knaufk-flink-faker
+  inputs:
+    name: knaufk-flink-faker
+    repo_url: https://github.com/knaufk/flink-faker
+    commit_sha: e3431c51eef78b66406c2322037497f4f2eaae80
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: knaufk/flink-faker
+- name: lettuce-io-lettuce-core
+  inputs:
+    name: lettuce-io-lettuce-core
+    repo_url: https://github.com/lettuce-io/lettuce-core
+    commit_sha: 7be77cb8298b456cb68754f71c5eb3fed412c0f9
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: coral
+    display: lettuce-io/lettuce-core
+- name: lookfirst-sardine
+  inputs:
+    name: lookfirst-sardine
+    repo_url: https://github.com/lookfirst/sardine
+    commit_sha: 529f26a5d2091f8a1472ee3bd66c7898c34544b1
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: lookfirst/sardine
+- name: pac4j-dropwizard-pac4j
+  inputs:
+    name: pac4j-dropwizard-pac4j
+    repo_url: https://github.com/pac4j/dropwizard-pac4j
+    commit_sha: 596b19b886b828f6d2a7cbe15d63d7ad260005e5
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: pac4j/dropwizard-pac4j
+- name: pkiraly-qa-catalogue
+  inputs:
+    name: pkiraly-qa-catalogue
+    repo_url: https://github.com/pkiraly/qa-catalogue
+    commit_sha: d80752368e554c739a7c1c36f8ea59df657c8f0e
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: pkiraly/qa-catalogue
+- name: qqxx6661-log-record
+  inputs:
+    name: qqxx6661-log-record
+    repo_url: https://github.com/qqxx6661/log-record
+    commit_sha: 7c2b16d58416aeaf02e3f7696d4a59c39e39e233
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: qqxx6661/log-record
+- name: retest-recheck-cli
+  inputs:
+    name: retest-recheck-cli
+    repo_url: https://github.com/retest/recheck.cli
+    commit_sha: 23fc8fe2d5b7405275a00acd83bf84b4879bf01b
+    images:
+      release: snyk/snyk:maven-3-jdk-17
+      local: maven:3.9-eclipse-temurin-17
+    test_cmd: mvn -B -fae -Dmaven.test.failure.ignore=true test
+    install_cmd: mvn -B -ntp dependency:resolve
+    timeout_s: 21600
+    build_cmd: mvn -B -ntp -DskipTests compile
+    test_framework: maven
+  metadata:
+    ecosystem: maven
+    source: bump
+    display: retest/recheck.cli
+- name: tryghost-ghost
+  inputs:
+    name: tryghost-ghost
+    repo_url: https://github.com/TryGhost/Ghost
+    commit_sha: d8a298ce0697fcf85d6399339ebf858a05491b0b
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: npm test
+    install_cmd: npm ci || npm install --legacy-peer-deps
+    timeout_s: 21600
+    test_framework: mocha
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: TryGhost/Ghost
+- name: expressjs-generator
+  inputs:
+    name: expressjs-generator
+    repo_url: https://github.com/expressjs/generator
+    commit_sha: 695afb592afa2d22ceaa772a00a34f8145b0f290
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: npx mocha --reporter spec --check-leaks test/
+    install_cmd: npm ci; rc=$?; [ $rc -eq 0 ] || npm install --legacy-peer-deps; exit $rc
+    timeout_s: 21600
+    test_framework: mocha
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: expressjs/generator
+- name: goparrot-geocoder
+  inputs:
+    name: goparrot-geocoder
+    repo_url: https://github.com/goparrot/geocoder
+    commit_sha: 3a9cf759e0dbc3e053adee1a5626375e4623060b
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: npm test
+    install_cmd: npm ci || npm install --legacy-peer-deps
+    timeout_s: 21600
+    build_cmd: npm run typecheck
+    test_framework: mocha
+  metadata:
+    ecosystem: npm
+    source: github-search
+    display: goparrot/geocoder
+- name: hantsy-nestjs-rest-sample
+  inputs:
+    name: hantsy-nestjs-rest-sample
+    repo_url: https://github.com/hantsy/nestjs-rest-sample
+    commit_sha: bb2afa7eec2390a9d8bede3b74a9783b6eab622c
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: mkdir -p /out/junit && npm test -- --json --outputFile=/out/junit/jest.json
+    install_cmd: npm ci; rc=$?; [ $rc -eq 0 ] || npm install --legacy-peer-deps; exit $rc
+    timeout_s: 21600
+    build_cmd: npm run build
+    test_framework: jest
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: hantsy/nestjs-rest-sample
+- name: ixartz-serverless-boilerplate-express-typescript
+  inputs:
+    name: ixartz-serverless-boilerplate-express-typescript
+    repo_url: https://github.com/ixartz/Serverless-Boilerplate-Express-TypeScript
+    commit_sha: d315fb1c2f2d3e8c8a4f80c5afb0fb98c52314ee
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: mkdir -p /out/junit && npm test -- --json --outputFile=/out/junit/jest.json
+    install_cmd: npm ci; rc=$?; [ $rc -eq 0 ] || npm install --legacy-peer-deps; exit $rc
+    timeout_s: 21600
+    build_cmd: npm run check-types
+    test_framework: jest
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: ixartz/Serverless-Boilerplate-Express-TypeScript
+- name: kutia-software-company-express-typescript-starter
+  inputs:
+    name: kutia-software-company-express-typescript-starter
+    repo_url: https://github.com/kutia-software-company/express-typescript-starter
+    commit_sha: de844c46fa912151228c5679385deb6c444c2eb3
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: mkdir -p /out/junit && npm test -- --json --outputFile=/out/junit/jest.json
+    install_cmd: npm ci; rc=$?; [ $rc -eq 0 ] || npm install --legacy-peer-deps; exit $rc
+    timeout_s: 21600
+    build_cmd: npx tsc --noEmit
+    test_framework: jest
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: kutia-software-company/express-typescript-starter
+- name: restify-node-restify
+  inputs:
+    name: restify-node-restify
+    repo_url: https://github.com/restify/node-restify
+    commit_sha: 009f40b31612940edd196319178c574e49c85bb8
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: mkdir -p /out/junit; ./node_modules/.bin/nodeunit --reporter junit --output /out/junit/nodeunit test/*.test.js;
+      ./node_modules/.bin/mocha --full-trace --no-exit --reporter xunit --reporter-option output=/out/junit/mocha.xml test/plugins/*.test.js
+    install_cmd: npm ci || npm install --legacy-peer-deps
+    timeout_s: 21600
+    test_framework: mocha
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: restify/node-restify
+- name: santiq-bulletproof-nodejs
+  inputs:
+    name: santiq-bulletproof-nodejs
+    repo_url: https://github.com/santiq/bulletproof-nodejs
+    commit_sha: 7ce1b4690c4e96659cb1ed0d367b08b3ab35a24b
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: mkdir -p /out/junit && npm test -- --json --outputFile=/out/junit/jest.json
+    install_cmd: npm ci; rc=$?; [ $rc -eq 0 ] || npm install --legacy-peer-deps; exit $rc
+    timeout_s: 21600
+    build_cmd: npx tsc --noEmit --skipLibCheck
+    test_framework: jest
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: santiq/bulletproof-nodejs
+- name: socketio-socket-io
+  inputs:
+    name: socketio-socket-io
+    repo_url: https://github.com/socketio/socket.io
+    commit_sha: 3f6647897a68b0403ded768711e809c21e173fd5
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: npm run compile && npx mocha --require test/support/hooks.js test/index.js test/webtransport.mjs
+    install_cmd: npm ci; rc=$?; [ $rc -eq 0 ] || npm install --legacy-peer-deps; exit $rc
+    timeout_s: 21600
+    test_framework: mocha
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: socketio/socket.io
+- name: tediousjs-node-mssql
+  inputs:
+    name: tediousjs-node-mssql
+    repo_url: https://github.com/tediousjs/node-mssql
+    commit_sha: b46f3a97a4b4fd40adfa5e22c7c5101cde8ff1ad
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: npm test
+    install_cmd: npm ci; rc=$?; [ $rc -eq 0 ] || npm install --legacy-peer-deps; exit $rc
+    timeout_s: 21600
+    test_framework: mocha
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: tediousjs/node-mssql
+- name: vpulim-node-soap
+  inputs:
+    name: vpulim-node-soap
+    repo_url: https://github.com/vpulim/node-soap
+    commit_sha: bb39035da1704037fac7a4b37f15abaf790225bf
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: npx mocha --timeout 15000 --exit test/*-test.js test/security/*.js
+    install_cmd: npm ci; rc=$?; [ $rc -eq 0 ] || npm install --legacy-peer-deps; exit $rc
+    timeout_s: 21600
+    build_cmd: npx tsc --noEmit -p .
+    test_framework: mocha
+  metadata:
+    ecosystem: npm
+    source: curated
+    display: vpulim/node-soap
+- name: hisatri-lrcapi
+  inputs:
+    name: hisatri-lrcapi
+    repo_url: https://github.com/HisAtri/LrcApi
+    commit_sha: ac8660d61664083f45c7df2d333b2be7ebd01568
+    images:
+      release: snyk/snyk:python-3.11
+      local: python:3.11-bookworm
+    test_cmd: pytest -q --junitxml=/out/junit/pytest.xml
+    install_cmd: pip install -q -r requirements.txt && if [ -f setup.py ] || [ -f pyproject.toml ]; then pip install -q -e
+      '.[all,dev,test]'; fi && pip install -q pytest
+    timeout_s: 21600
+    build_cmd: python -c 'import app'
+    test_framework: pytest
+  metadata:
+    ecosystem: pip
+    source: curated
+    display: HisAtri/LrcApi
+- name: airbnb-knowledge-repo
+  inputs:
+    name: airbnb-knowledge-repo
+    repo_url: https://github.com/airbnb/knowledge-repo
+    commit_sha: 71fd3fd42db7866257f86f37235ca0b5d81f5378
+    images:
+      release: snyk/snyk:python-3.11
+      local: python:3.11-bookworm
+    test_cmd: pytest -q --junitxml=/out/junit/pytest.xml
+    install_cmd: pip install -q -r requirements.txt && pip install -q -e '.[all]' && pip install -q pytest
+    timeout_s: 21600
+    build_cmd: python -c 'import knowledge_repo'
+    test_framework: pytest
+    manifests:
+    - requirements.txt
+  metadata:
+    ecosystem: pip
+    source: curated
+    display: airbnb/knowledge-repo
+- name: encode-django-rest-framework
+  inputs:
+    name: encode-django-rest-framework
+    repo_url: https://github.com/encode/django-rest-framework
+    commit_sha: 0e1c7d3613905a8f9db69abb82f883e22e967119
+    images:
+      release: snyk/snyk:python-3.11
+      local: python:3.11-bookworm
+    test_cmd: pytest -q --junitxml=/out/junit/pytest.xml
+    install_cmd: pip install -q -r requirements.txt && if [ -f setup.py ] || [ -f pyproject.toml ]; then pip install -q -e
+      '.[all,dev,test]'; fi && pip install -q pytest
+    timeout_s: 21600
+    build_cmd: python -c "import django; from django.conf import settings; settings.configure(INSTALLED_APPS=['django.contrib.contenttypes',
+      'django.contrib.auth', 'rest_framework']); django.setup(); import rest_framework.views, rest_framework.serializers,
+      rest_framework.routers"
+    test_framework: pytest
+  metadata:
+    ecosystem: pip
+    source: curated
+    display: encode/django-rest-framework
+- name: ddedalus-poetry-auto-export
+  inputs:
+    name: ddedalus-poetry-auto-export
+    repo_url: https://github.com/Ddedalus/poetry-auto-export
+    commit_sha: db9a75f514ac9adeccd47e4625eb2e1a3ab903c4
+    images:
+      release: snyk/snyk:python-3.11
+      local: python:3.11-bookworm
+    test_cmd: poetry run pytest -q --junitxml=/out/junit/pytest.xml
+    install_cmd: pip install -q poetry==2.5.1 && poetry install --no-interaction
+    timeout_s: 21600
+    build_cmd: poetry run python -c 'import poetry_auto_export'
+    test_framework: pytest
+    manifests:
+    - pyproject.toml
+  metadata:
+    ecosystem: poetry
+    source: curated
+    display: Ddedalus/poetry-auto-export
+- name: ewjoachim-poetry-to-pre-commit
+  inputs:
+    name: ewjoachim-poetry-to-pre-commit
+    repo_url: https://github.com/ewjoachim/poetry-to-pre-commit
+    commit_sha: 5fd260d8cdaf6bd99af47e0bc93b498d5bc2e9dc
+    images:
+      release: snyk/snyk:python-3.11
+      local: python:3.11-bookworm
+    test_cmd: poetry run pytest -q --junitxml=/out/junit/pytest.xml
+    install_cmd: pip install -q poetry==2.5.1 && poetry install --no-interaction
+    timeout_s: 21600
+    build_cmd: poetry run python -c 'import poetry_to_pre_commit'
+    test_framework: pytest
+    manifests:
+    - pyproject.toml
+  metadata:
+    ecosystem: poetry
+    source: curated
+    display: ewjoachim/poetry-to-pre-commit
+- name: predict-idlab-plotly-resampler
+  inputs:
+    name: predict-idlab-plotly-resampler
+    repo_url: https://github.com/predict-idlab/plotly-resampler
+    commit_sha: 719dd56c4b24bef93c7c944f3ae62865a25618dc
+    images:
+      release: snyk/snyk:python-3.11
+      local: python:3.11-bookworm
+    test_cmd: poetry run pytest -q --junitxml=/out/junit/pytest.xml
+    install_cmd: pip install -q poetry==2.5.1 && poetry install --no-interaction
+    timeout_s: 21600
+    build_cmd: poetry run python -c 'import plotly_resampler'
+    test_framework: pytest
+  metadata:
+    ecosystem: poetry
+    source: github-search
+    display: predict-idlab/plotly-resampler
+- name: qdrant-qdrant-client
+  inputs:
+    name: qdrant-qdrant-client
+    repo_url: https://github.com/qdrant/qdrant-client
+    commit_sha: 64311d3a19b644647f73f2ac143902f4203a3d77
+    images:
+      release: snyk/snyk:python-3.11
+      local: python:3.11-bookworm
+    test_cmd: poetry run pytest -q --junitxml=/out/junit/pytest.xml
+    install_cmd: pip install -q poetry==2.5.1 && poetry install --no-interaction
+    timeout_s: 21600
+    build_cmd: poetry run python -c 'import qdrant_client'
+    test_framework: pytest
+  metadata:
+    ecosystem: poetry
+    source: curated
+    display: qdrant/qdrant-client
+- name: wemake-services-wemake-python-styleguide
+  inputs:
+    name: wemake-services-wemake-python-styleguide
+    repo_url: https://github.com/wemake-services/wemake-python-styleguide
+    commit_sha: bdd53071951254fa0cead373c130427ffc245f66
+    images:
+      release: snyk/snyk:python-3.11
+      local: python:3.11-bookworm
+    test_cmd: poetry run pytest -q --junitxml=/out/junit/pytest.xml
+    install_cmd: pip install -q poetry==2.5.1 && poetry install --no-interaction
+    timeout_s: 21600
+    build_cmd: poetry run python -c 'import wemake_python_styleguide.checker'
+    test_framework: pytest
+  metadata:
+    ecosystem: poetry
+    source: curated
+    display: wemake-services/wemake-python-styleguide
+- name: atlassian-react-beautiful-dnd
+  inputs:
+    name: atlassian-react-beautiful-dnd
+    repo_url: https://github.com/atlassian/react-beautiful-dnd
+    commit_sha: 2baf5c6344cbb7862cf21ee697152bffb3765fa9
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: mkdir -p /out/junit && yarn test --json --outputFile=/out/junit/jest.json
+    install_cmd: yarn install --frozen-lockfile; rc=$?; [ $rc -eq 0 ] || yarn install; exit $rc
+    timeout_s: 21600
+    build_cmd: NODE_OPTIONS=--openssl-legacy-provider yarn build:dist
+    test_framework: jest
+  metadata:
+    ecosystem: yarn
+    source: curated
+    display: atlassian/react-beautiful-dnd
+- name: canva-public-js2nix
+  inputs:
+    name: canva-public-js2nix
+    repo_url: https://github.com/canva-public/js2nix
+    commit_sha: 8cd32b5c87767b019e0960b27599f6b9d195ddb0
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: mkdir -p /out/junit && yarn test --json --outputFile=/out/junit/jest.json
+    install_cmd: yarn install --frozen-lockfile; rc=$?; [ $rc -eq 0 ] || yarn install; exit $rc
+    timeout_s: 21600
+    test_framework: jest
+  metadata:
+    ecosystem: yarn
+    source: github-search
+    display: canva-public/js2nix
+- name: hagopj13-node-express-boilerplate
+  inputs:
+    name: hagopj13-node-express-boilerplate
+    repo_url: https://github.com/hagopj13/node-express-boilerplate
+    commit_sha: 179ae84efec61b14206d0305d941daed6c6d07f9
+    images:
+      release: snyk/snyk:node-20
+      local: node:20-bookworm
+    test_cmd: mkdir -p /out/junit && yarn test --json --outputFile=/out/junit/jest.json
+    install_cmd: yarn install --frozen-lockfile; rc=$?; [ $rc -eq 0 ] || yarn install; exit $rc
+    timeout_s: 21600
+    test_framework: jest
+  metadata:
+    ecosystem: yarn
+    source: github-advisory
+    display: hagopj13/node-express-boilerplate

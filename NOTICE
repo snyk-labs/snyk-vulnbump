@@ -1,0 +1,1 @@
+VulnBump, Copyright 2026 Snyk Ltd. The 43 repositories listed in benchmarking/cases/cases.yaml are third-party projects that keep their own licences. They are not distributed with VulnBump; the harness clones them at their pinned commits at run time.

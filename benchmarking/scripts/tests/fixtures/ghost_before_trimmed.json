@@ -1,0 +1,128 @@
+{
+ "packageManager": "npm",
+ "displayTargetFile": "package-lock.json",
+ "vulnerabilities": [
+  {
+   "id": "SNYK-JS-LODASHTEMPLATE-1088054",
+   "severity": "high",
+   "packageName": "lodash.template",
+   "version": "4.18.1",
+   "from": [
+    "@tryghost/api-framework@0.0.0",
+    "@tryghost/tpl@0.1.30",
+    "lodash.template@4.18.1"
+   ],
+   "upgradePath": [
+    false,
+    "@tryghost/tpl@2.0.1"
+   ]
+  },
+  {
+   "id": "SNYK-JS-LODASHTEMPLATE-1088054",
+   "severity": "high",
+   "packageName": "lodash.template",
+   "version": "4.18.1",
+   "from": [
+    "@tryghost/api-framework@0.0.0",
+    "@tryghost/validator@0.2.11",
+    "@tryghost/tpl@0.1.30",
+    "lodash.template@4.18.1"
+   ],
+   "upgradePath": [
+    false,
+    "@tryghost/validator@2.0.0",
+    "@tryghost/tpl@2.3.14"
+   ]
+  },
+  {
+   "id": "SNYK-JS-UUID-16133035",
+   "severity": "medium",
+   "packageName": "uuid",
+   "version": "9.0.1",
+   "from": [
+    "@tryghost/api-framework@0.0.0",
+    "@tryghost/errors@1.3.2",
+    "uuid@9.0.1"
+   ],
+   "upgradePath": [
+    false,
+    "@tryghost/errors@3.0.1"
+   ]
+  },
+  {
+   "id": "SNYK-JS-UUID-16133035",
+   "severity": "medium",
+   "packageName": "uuid",
+   "version": "9.0.1",
+   "from": [
+    "@tryghost/api-framework@0.0.0",
+    "@tryghost/validator@0.2.11",
+    "@tryghost/errors@1.3.2",
+    "uuid@9.0.1"
+   ],
+   "upgradePath": [
+    false,
+    "@tryghost/validator@2.0.0",
+    "@tryghost/errors@3.3.14"
+   ]
+  },
+  {
+   "id": "SNYK-JS-VALIDATOR-1090599",
+   "severity": "medium",
+   "packageName": "validator",
+   "version": "7.2.0",
+   "from": [
+    "@tryghost/api-framework@0.0.0",
+    "@tryghost/validator@0.2.11",
+    "validator@7.2.0"
+   ],
+   "upgradePath": [
+    false,
+    "@tryghost/validator@3.0.0",
+    "validator@13.15.35"
+   ]
+  }
+ ],
+ "remediation": {
+  "upgrade": {
+   "@tryghost/errors@1.3.2": {
+    "upgradeTo": "@tryghost/errors@3.0.1",
+    "upgrades": [
+     "uuid@9.0.1"
+    ],
+    "vulns": [
+     "SNYK-JS-UUID-16133035"
+    ]
+   },
+   "@tryghost/tpl@0.1.30": {
+    "upgradeTo": "@tryghost/tpl@2.0.1",
+    "upgrades": [
+     "lodash.template@4.18.1"
+    ],
+    "vulns": [
+     "SNYK-JS-LODASHTEMPLATE-1088054"
+    ]
+   },
+   "@tryghost/validator@0.2.11": {
+    "upgradeTo": "@tryghost/validator@3.0.0",
+    "upgrades": [
+     "validator@7.2.0",
+     "validator@7.2.0",
+     "validator@7.2.0",
+     "validator@7.2.0",
+     "validator@7.2.0",
+     "validator@7.2.0",
+     "lodash.template@4.18.1",
+     "uuid@9.0.1"
+    ],
+    "vulns": [
+     "SNYK-JS-VALIDATOR-1090599",
+     "SNYK-JS-LODASHTEMPLATE-1088054",
+     "SNYK-JS-UUID-16133035"
+    ]
+   }
+  },
+  "pin": {},
+  "unresolved": []
+ }
+}

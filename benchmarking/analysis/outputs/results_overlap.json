@@ -1,0 +1,182 @@
+{
+ "mcnemar": {
+  "evo-remediation-agent_vs_claude-code-snyk-scan": {
+   "n": 307,
+   "only_evo-remediation-agent": 46,
+   "only_claude-code-snyk-scan": 7,
+   "discordant": 53,
+   "p": 4.003196174551249e-08,
+   "p_sci": "4.0e-08"
+  },
+  "evo-remediation-agent_vs_claude-code-unaided": {
+   "n": 307,
+   "only_evo-remediation-agent": 96,
+   "only_claude-code-unaided": 2,
+   "discordant": 98,
+   "p": 3.0620424897058794e-26,
+   "p_sci": "3.1e-26"
+  },
+  "claude-code-snyk-scan_vs_claude-code-unaided": {
+   "n": 307,
+   "only_claude-code-snyk-scan": 64,
+   "only_claude-code-unaided": 9,
+   "discordant": 73,
+   "p": 2.378889919863532e-11,
+   "p_sci": "2.4e-11"
+  }
+ },
+ "overlap": {
+  "total": {
+   "n": 307,
+   "all3": 172,
+   "two": 70,
+   "one": 42,
+   "none": 23
+  },
+  "pip": {
+   "n": 18,
+   "all3": 15,
+   "two": 3,
+   "one": 0,
+   "none": 0
+  },
+  "Maven": {
+   "n": 106,
+   "all3": 56,
+   "two": 20,
+   "one": 14,
+   "none": 16
+  },
+  "Yarn": {
+   "n": 18,
+   "all3": 16,
+   "two": 2,
+   "one": 0,
+   "none": 0
+  },
+  "Poetry": {
+   "n": 42,
+   "all3": 17,
+   "two": 13,
+   "one": 12,
+   "none": 0
+  },
+  "npm": {
+   "n": 57,
+   "all3": 31,
+   "two": 9,
+   "one": 10,
+   "none": 7
+  },
+  "Gradle": {
+   "n": 66,
+   "all3": 37,
+   "two": 23,
+   "one": 6,
+   "none": 0
+  }
+ },
+ "overlap_combos": {
+  "claude-code-snyk-scan+claude-code-unaided": 2,
+  "evo-remediation-agent+claude-code-unaided": 9,
+  "evo-remediation-agent+claude-code-snyk-scan": 59,
+  "evo-remediation-agent": 37,
+  "claude-code-snyk-scan": 5
+ },
+ "source_edits": {
+  "evo-remediation-agent": {
+   "pass": 277,
+   "pass_major": 95,
+   "source": 59,
+   "source_major": 49,
+   "pass_nonmajor": 182,
+   "source_nonmajor": 10,
+   "share": 0.21299638989169675,
+   "share_major": 0.5157894736842106,
+   "share_nonmajor": 0.054945054945054944
+  },
+  "claude-code-snyk-scan": {
+   "pass": 238,
+   "pass_major": 72,
+   "source": 28,
+   "source_major": 23,
+   "pass_nonmajor": 166,
+   "source_nonmajor": 5,
+   "share": 0.11764705882352941,
+   "share_major": 0.3194444444444444,
+   "share_nonmajor": 0.030120481927710843
+  },
+  "claude-code-unaided": {
+   "pass": 183,
+   "pass_major": 50,
+   "source": 15,
+   "source_major": 12,
+   "pass_nonmajor": 133,
+   "source_nonmajor": 3,
+   "share": 0.08196721311475409,
+   "share_major": 0.24,
+   "share_nonmajor": 0.022556390977443608
+  }
+ },
+ "source_edits_file_classes": {
+  "source": 530,
+  "dep": 998,
+  "test": 265,
+  "neither": 10
+ },
+ "upgrades_passed_dep_only_by_some_agent": 238,
+ "failure_causes": {
+  "counts": {
+   "evo-remediation-agent": {
+    "within_major": 0,
+    "transitive_pin": 0,
+    "no_change": 4,
+    "python_split": 1,
+    "wrong_version": 1,
+    "moved": 0,
+    "other_unfixed": 3,
+    "dep_conflict": 0,
+    "api_migration": 7,
+    "binary_incompat": 2,
+    "behaviour_change": 5,
+    "old_toolchain": 6,
+    "other_broken": 1
+   },
+   "claude-code-snyk-scan": {
+    "within_major": 10,
+    "transitive_pin": 15,
+    "no_change": 12,
+    "python_split": 8,
+    "wrong_version": 3,
+    "moved": 0,
+    "other_unfixed": 0,
+    "dep_conflict": 16,
+    "api_migration": 3,
+    "binary_incompat": 0,
+    "behaviour_change": 1,
+    "old_toolchain": 1,
+    "other_broken": 0
+   },
+   "claude-code-unaided": {
+    "within_major": 30,
+    "transitive_pin": 9,
+    "no_change": 15,
+    "python_split": 15,
+    "wrong_version": 34,
+    "moved": 3,
+    "other_unfixed": 1,
+    "dep_conflict": 14,
+    "api_migration": 2,
+    "binary_incompat": 0,
+    "behaviour_change": 0,
+    "old_toolchain": 1,
+    "other_broken": 0
+   }
+  },
+  "totals": {
+   "evo-remediation-agent": 30,
+   "claude-code-snyk-scan": 69,
+   "claude-code-unaided": 124
+  }
+ }
+}

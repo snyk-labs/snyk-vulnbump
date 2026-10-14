@@ -1,0 +1,3039 @@
+{
+ "definitions": "Package manager bump (package-manager-bump-single-upgrade) as a fourth column of Tables 2-4 and Figure 4.\n\nEvery number uses the definitions behind the agents' columns, and the script first recomputes the\nagents' published cells (Tables tab:key, tab:headline, tab:causes and the Figure 4 counts) and\nchecks them against the cells printed in the paper before computing the baseline.\n\n- Table 2 (tab:key): per-gate rates are the report's totals (deps_ok_rate, build_ok_rate,\n  tests_kept_rate, green_rate; a gate that does not apply counts as passed). \"Targeted\n  vulnerabilities fixed\" counts attempts whose reasons include neither vuln-not-cleared nor\n  verification-scan-failed. Instances: an instance counts as fixed if every covering attempt cleared it.\n- Table 3 (tab:headline): macro rates with a repository-level percentile bootstrap (10,000\n  resamples, seed 12345, as extract_results.py, for both PASS and the vulnerability-fix rate).\n- Instance drift: the baseline's 8 Oct scan has 2,072 fixable instances, the agents' 2,066. The paper\n  keeps 2,066, so instance-level baseline numbers are restricted to the agents' (case, manifest, id)\n  set; the six extra instances are reported separately.\n- Figure 4: first failed gate is reasons[0]; a failed verification rescan counts with the rescan gate.\n- Table 4 (tab:causes): failure_causes.classify() and category() on the baseline's attempts, plus\n  baseline-specific rules and overrides (PM_BUMP_OVERRIDES), each with a reason. Failures that fit no\n  existing row go to \"other\".\n\nRun from the repo root: uv run --project benchmarking/scripts --group analysis python benchmarking/analysis/pm_bump_baseline.py\nWrites benchmarking/analysis/outputs/pm_bump_baseline.json.",
+ "agents_reproduced": {
+  "claude-code-unaided": {
+   "tab:key": {
+    "Dependencies resolve": "95.4\\%",
+    "Targeted vulnerabilities fixed": "63.5\\%",
+    "Build": "98.4\\%",
+    "Tests pass": "98.7\\%",
+    "Project still works": "93.8\\%",
+    "PASS": "59.6\\%",
+    "PASS count": "(183/307)",
+    "Vulnerability instances fixed": "72.7\\%",
+    "Vulnerability instances count": "(1{,}503/2{,}066)"
+   },
+   "tab:headline": {
+    "All gates pass, macro [95% CI]": "0.680 [0.582, 0.770]",
+    "Repositories with every upgrade passing / none passing": "15 / 3",
+    "Vulnerabilities fixed, macro [95% CI]": "0.807 [0.722, 0.882]",
+    "Fixable instances remaining (H / M / L)": "282 / 223 / 58"
+   },
+   "fig:failures": {
+    "deps-unresolved": 14,
+    "vuln-not-cleared": 107,
+    "build-broken": 3,
+    "tests-regressed": 0
+   },
+   "tab:causes": {
+    "Vulnerability remediation": 92,
+    "still_vulnerable": 64,
+    "partial_fix": 13,
+    "no_upgrade": 15,
+    "Version compatibility": 30,
+    "dependency_constraints": 14,
+    "runtime_constraint": 15,
+    "toolchain_constraint": 1,
+    "Code compatibility": 2,
+    "api_build": 2,
+    "missing_at_runtime": 0,
+    "behaviour": 0,
+    "Other": 0,
+    "other": 0,
+    "failed": 124
+   },
+   "raw": {
+    "attempts": 307,
+    "verified": 183,
+    "deps_ok_rate": 0.954,
+    "rescan_ok": 195,
+    "rescan_ok_rate": 0.6351791530944625,
+    "build_ok_rate": 0.984,
+    "tests_kept_rate": 0.987,
+    "green_rate": 0.938,
+    "pass_rate": 0.5960912052117264,
+    "instances": 2066,
+    "instances_fixed": 1503,
+    "macro_pass": 0.679606918988804,
+    "macro_pass_ci95": [
+     0.5816869804002608,
+     0.7698357117688513
+    ],
+    "repos_all_pass": 15,
+    "repos_zero_pass": 3,
+    "macro_fixed": 0.8073804409368934,
+    "macro_fixed_ci95": [
+     0.7220553475870658,
+     0.8815337330608489
+    ],
+    "remaining_by_severity": {
+     "high": 282,
+     "medium": 223,
+     "low": 58
+    },
+    "report_totals": {
+     "fixable_total": 2066,
+     "fixable_cleared": 1503,
+     "macro_rate": 0.68,
+     "macro_cleared_rate": 0.807,
+     "remaining_by_severity": {
+      "high": 282,
+      "low": 58,
+      "medium": 223
+     }
+    }
+   }
+  },
+  "claude-code-snyk-scan": {
+   "tab:key": {
+    "Dependencies resolve": "94.8\\%",
+    "Targeted vulnerabilities fixed": "83.7\\%",
+    "Build": "98.0\\%",
+    "Tests pass": "99.0\\%",
+    "Project still works": "92.8\\%",
+    "PASS": "77.5\\%",
+    "PASS count": "(238/307)",
+    "Vulnerability instances fixed": "83.1\\%",
+    "Vulnerability instances count": "(1{,}716/2{,}066)"
+   },
+   "tab:headline": {
+    "All gates pass, macro [95% CI]": "0.801 [0.710, 0.879]",
+    "Repositories with every upgrade passing / none passing": "22 / 2",
+    "Vulnerabilities fixed, macro [95% CI]": "0.901 [0.841, 0.951]",
+    "Fixable instances remaining (H / M / L)": "143 / 167 / 40"
+   },
+   "fig:failures": {
+    "deps-unresolved": 16,
+    "vuln-not-cleared": 48,
+    "build-broken": 3,
+    "tests-regressed": 2
+   },
+   "tab:causes": {
+    "Vulnerability remediation": 40,
+    "still_vulnerable": 13,
+    "partial_fix": 15,
+    "no_upgrade": 12,
+    "Version compatibility": 25,
+    "dependency_constraints": 16,
+    "runtime_constraint": 8,
+    "toolchain_constraint": 1,
+    "Code compatibility": 4,
+    "api_build": 2,
+    "missing_at_runtime": 1,
+    "behaviour": 1,
+    "Other": 0,
+    "other": 0,
+    "failed": 69
+   },
+   "raw": {
+    "attempts": 307,
+    "verified": 238,
+    "deps_ok_rate": 0.948,
+    "rescan_ok": 257,
+    "rescan_ok_rate": 0.8371335504885994,
+    "build_ok_rate": 0.98,
+    "tests_kept_rate": 0.99,
+    "green_rate": 0.928,
+    "pass_rate": 0.7752442996742671,
+    "instances": 2066,
+    "instances_fixed": 1716,
+    "macro_pass": 0.80057641345758,
+    "macro_pass_ci95": [
+     0.7097718774715076,
+     0.8788872818210001
+    ],
+    "repos_all_pass": 22,
+    "repos_zero_pass": 2,
+    "macro_fixed": 0.9014223139219761,
+    "macro_fixed_ci95": [
+     0.841443005877483,
+     0.9511012536341602
+    ],
+    "remaining_by_severity": {
+     "high": 143,
+     "medium": 167,
+     "low": 40
+    },
+    "report_totals": {
+     "fixable_total": 2066,
+     "fixable_cleared": 1716,
+     "macro_rate": 0.801,
+     "macro_cleared_rate": 0.901,
+     "remaining_by_severity": {
+      "high": 143,
+      "low": 40,
+      "medium": 167
+     }
+    }
+   }
+  },
+  "evo-remediation-agent": {
+   "tab:key": {
+    "Dependencies resolve": "100\\%",
+    "Targeted vulnerabilities fixed": "97.1\\%",
+    "Build": "96.7\\%",
+    "Tests pass": "95.4\\%",
+    "Project still works": "92.8\\%",
+    "PASS": "90.2\\%",
+    "PASS count": "(277/307)",
+    "Vulnerability instances fixed": "95.9\\%",
+    "Vulnerability instances count": "(1{,}982/2{,}066)"
+   },
+   "tab:headline": {
+    "All gates pass, macro [95% CI]": "0.931 [0.881, 0.971]",
+    "Repositories with every upgrade passing / none passing": "32 / 0",
+    "Vulnerabilities fixed, macro [95% CI]": "0.976 [0.952, 0.994]",
+    "Fixable instances remaining (H / M / L)": "35 / 35 / 14"
+   },
+   "fig:failures": {
+    "deps-unresolved": 0,
+    "vuln-not-cleared": 9,
+    "build-broken": 9,
+    "tests-regressed": 12
+   },
+   "tab:causes": {
+    "Vulnerability remediation": 8,
+    "still_vulnerable": 1,
+    "partial_fix": 3,
+    "no_upgrade": 4,
+    "Version compatibility": 7,
+    "dependency_constraints": 0,
+    "runtime_constraint": 1,
+    "toolchain_constraint": 6,
+    "Code compatibility": 15,
+    "api_build": 3,
+    "missing_at_runtime": 6,
+    "behaviour": 6,
+    "Other": 0,
+    "other": 0,
+    "failed": 30
+   },
+   "raw": {
+    "attempts": 307,
+    "verified": 277,
+    "deps_ok_rate": 1.0,
+    "rescan_ok": 298,
+    "rescan_ok_rate": 0.9706840390879479,
+    "build_ok_rate": 0.967,
+    "tests_kept_rate": 0.954,
+    "green_rate": 0.928,
+    "pass_rate": 0.9022801302931596,
+    "instances": 2066,
+    "instances_fixed": 1982,
+    "macro_pass": 0.9309104332360146,
+    "macro_pass_ci95": [
+     0.8812854458203295,
+     0.9707272056109265
+    ],
+    "repos_all_pass": 32,
+    "repos_zero_pass": 0,
+    "macro_fixed": 0.975940357296888,
+    "macro_fixed_ci95": [
+     0.9518152808740176,
+     0.9944903927007115
+    ],
+    "remaining_by_severity": {
+     "high": 35,
+     "medium": 35,
+     "low": 14
+    },
+    "report_totals": {
+     "fixable_total": 2066,
+     "fixable_cleared": 1982,
+     "macro_rate": 0.931,
+     "macro_cleared_rate": 0.976,
+     "remaining_by_severity": {
+      "high": 35,
+      "low": 14,
+      "medium": 35
+     }
+    }
+   }
+  }
+ },
+ "package-manager-bump": {
+  "tab:key": {
+   "Dependencies resolve": "82.4\\%",
+   "Targeted vulnerabilities fixed": "62.2\\%",
+   "Build": "87.0\\%",
+   "Tests pass": "80.5\\%",
+   "Project still works": "64.2\\%",
+   "PASS": "46.9\\%",
+   "PASS count": "(144/307)",
+   "Vulnerability instances fixed": "56.5\\%",
+   "Vulnerability instances count": "(1{,}168/2{,}066)"
+  },
+  "tab:headline": {
+   "All gates pass, macro [95% CI]": "0.513 [0.397, 0.623]",
+   "Repositories with every upgrade passing / none passing": "10 / 10",
+   "Vulnerabilities fixed, macro [95% CI]": "0.725 [0.611, 0.832]",
+   "Fixable instances remaining (H / M / L)": "469 / 341 / 88"
+  },
+  "unrestricted_2072": {
+   "tab:key": {
+    "Dependencies resolve": "82.4\\%",
+    "Targeted vulnerabilities fixed": "62.2\\%",
+    "Build": "87.0\\%",
+    "Tests pass": "80.5\\%",
+    "Project still works": "64.2\\%",
+    "PASS": "46.9\\%",
+    "PASS count": "(144/307)",
+    "Vulnerability instances fixed": "56.5\\%",
+    "Vulnerability instances count": "(1{,}170/2{,}072)"
+   },
+   "tab:headline": {
+    "All gates pass, macro [95% CI]": "0.513 [0.397, 0.623]",
+    "Repositories with every upgrade passing / none passing": "10 / 10",
+    "Vulnerabilities fixed, macro [95% CI]": "0.725 [0.611, 0.832]",
+    "Fixable instances remaining (H / M / L)": "472 / 342 / 88"
+   }
+  },
+  "raw": {
+   "attempts": 307,
+   "verified": 144,
+   "deps_ok_rate": 0.824,
+   "rescan_ok": 191,
+   "rescan_ok_rate": 0.6221498371335505,
+   "build_ok_rate": 0.87,
+   "tests_kept_rate": 0.805,
+   "green_rate": 0.642,
+   "pass_rate": 0.46905537459283386,
+   "instances": 2066,
+   "instances_fixed": 1168,
+   "macro_pass": 0.5126892936296374,
+   "macro_pass_ci95": [
+    0.39723345326732584,
+    0.6231314626840411
+   ],
+   "repos_all_pass": 10,
+   "repos_zero_pass": 10,
+   "macro_fixed": 0.7250757795648741,
+   "macro_fixed_ci95": [
+    0.6106229273777689,
+    0.8323113148403797
+   ],
+   "remaining_by_severity": {
+    "high": 469,
+    "medium": 341,
+    "low": 88
+   },
+   "report_totals": {
+    "fixable_total": 2072,
+    "fixable_cleared": 1170,
+    "macro_rate": 0.513,
+    "macro_cleared_rate": 0.725,
+    "remaining_by_severity": {
+     "high": 472,
+     "low": 88,
+     "medium": 342
+    }
+   }
+  },
+  "raw_unrestricted": {
+   "attempts": 307,
+   "verified": 144,
+   "deps_ok_rate": 0.824,
+   "rescan_ok": 191,
+   "rescan_ok_rate": 0.6221498371335505,
+   "build_ok_rate": 0.87,
+   "tests_kept_rate": 0.805,
+   "green_rate": 0.642,
+   "pass_rate": 0.46905537459283386,
+   "instances": 2072,
+   "instances_fixed": 1170,
+   "macro_pass": 0.5126892936296374,
+   "macro_pass_ci95": [
+    0.39723345326732584,
+    0.6231314626840411
+   ],
+   "repos_all_pass": 10,
+   "repos_zero_pass": 10,
+   "macro_fixed": 0.7250307596550922,
+   "macro_fixed_ci95": [
+    0.6106916582166482,
+    0.8323559748353517
+   ],
+   "remaining_by_severity": {
+    "high": 472,
+    "medium": 342,
+    "low": 88
+   },
+   "report_totals": {
+    "fixable_total": 2072,
+    "fixable_cleared": 1170,
+    "macro_rate": 0.513,
+    "macro_cleared_rate": 0.725,
+    "remaining_by_severity": {
+     "high": 472,
+     "low": 88,
+     "medium": 342
+    }
+   }
+  },
+  "extra_instances": [
+   {
+    "case": "alphagov-pay-adminusers",
+    "manifest": "pom.xml",
+    "id": "SNYK-JAVA-COMRABBITMQ-20562146",
+    "severity": "medium",
+    "fixed": true,
+    "covering": [
+     {
+      "group_index": 5,
+      "label": "pom.xml: io.dropwizard.metrics:metrics-graphite@4.2.12 -> io.dropwizard.metrics:metrics-graphite@4.2.40",
+      "verified": true,
+      "cleared": true
+     }
+    ]
+   },
+   {
+    "case": "alphagov-pay-cardid",
+    "manifest": "pom.xml",
+    "id": "SNYK-JAVA-COMRABBITMQ-20562146",
+    "severity": "medium",
+    "fixed": true,
+    "covering": [
+     {
+      "group_index": 2,
+      "label": "pom.xml: io.dropwizard.metrics:metrics-graphite@4.2.7 -> io.dropwizard.metrics:metrics-graphite@4.2.40",
+      "verified": true,
+      "cleared": true
+     }
+    ]
+   },
+   {
+    "case": "hagopj13-node-express-boilerplate",
+    "manifest": "yarn.lock",
+    "id": "SNYK-JS-SPRINTFJS-20532016",
+    "severity": "medium",
+    "fixed": false,
+    "covering": [
+     {
+      "group_index": 10,
+      "label": "yarn.lock: pm2@5.1.0 -> pm2@6.0.9",
+      "verified": false,
+      "cleared": false
+     }
+    ]
+   },
+   {
+    "case": "internetofwater-nldi-services",
+    "manifest": "pom.xml",
+    "id": "SNYK-JAVA-ORGAPACHETOMCATEMBED-20552494",
+    "severity": "high",
+    "fixed": false,
+    "covering": [
+     {
+      "group_index": 6,
+      "label": "pom.xml: org.springframework.boot:spring-boot-starter-web@2.7.5 -> org.springframework.boot:spring-boot-starter-web@4.0.0",
+      "verified": false,
+      "cleared": false
+     }
+    ]
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "manifest": "samples/spring-freemarker/build.gradle",
+    "id": "SNYK-JAVA-ORGAPACHETOMCATEMBED-20552494",
+    "severity": "high",
+    "fixed": false,
+    "covering": [
+     {
+      "group_index": 10,
+      "label": "samples/spring-freemarker/build.gradle.kts: org.apache.tomcat.embed:tomcat-embed-websocket@10.1.55 -> org.apache.tomcat.embed:tomcat-embed-websocket@10.1.60",
+      "verified": false,
+      "cleared": true
+     },
+     {
+      "group_index": 14,
+      "label": "samples/spring-freemarker/build.gradle.kts: org.springframework.boot:spring-boot-starter-tomcat@3.5.16 -> org.springframework.boot:spring-boot-starter-tomcat@4.0.0",
+      "verified": false,
+      "cleared": false
+     }
+    ]
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "manifest": "samples/spring-i18n/build.gradle",
+    "id": "SNYK-JAVA-ORGAPACHETOMCATEMBED-20552494",
+    "severity": "high",
+    "fixed": false,
+    "covering": [
+     {
+      "group_index": 33,
+      "label": "samples/spring-i18n/build.gradle.kts: org.apache.tomcat.embed:tomcat-embed-websocket@10.1.55 -> org.apache.tomcat.embed:tomcat-embed-websocket@10.1.60",
+      "verified": false,
+      "cleared": true
+     },
+     {
+      "group_index": 37,
+      "label": "samples/spring-i18n/build.gradle.kts: org.springframework.boot:spring-boot-starter-tomcat@3.5.16 -> org.springframework.boot:spring-boot-starter-tomcat@4.0.0",
+      "verified": false,
+      "cleared": false
+     }
+    ]
+   }
+  ],
+  "rescan_gate_restricted_to_2066": {
+   "count": 192,
+   "verdicts_changed": [
+    {
+     "case": "hagopj13-node-express-boilerplate",
+     "group_index": 10,
+     "label": "yarn.lock: pm2@5.1.0 -> pm2@6.0.9"
+    }
+   ]
+  },
+  "tokuhirom_tomcat": [
+   {
+    "group_index": 10,
+    "pm_bump_label": "samples/spring-freemarker/build.gradle.kts: org.apache.tomcat.embed:tomcat-embed-websocket@10.1.55 -> org.apache.tomcat.embed:tomcat-embed-websocket@10.1.60",
+    "agent_label": "samples/spring-freemarker/build.gradle.kts: org.apache.tomcat.embed:tomcat-embed-websocket@10.1.55 -> org.apache.tomcat.embed:tomcat-embed-websocket@10.1.59",
+    "pm_bump_verified": false,
+    "pm_bump_reasons": [
+     "vuln-not-cleared"
+    ],
+    "pm_bump_cleared": "2/11",
+    "agent_instances": 10
+   },
+   {
+    "group_index": 33,
+    "pm_bump_label": "samples/spring-i18n/build.gradle.kts: org.apache.tomcat.embed:tomcat-embed-websocket@10.1.55 -> org.apache.tomcat.embed:tomcat-embed-websocket@10.1.60",
+    "agent_label": "samples/spring-i18n/build.gradle.kts: org.apache.tomcat.embed:tomcat-embed-websocket@10.1.55 -> org.apache.tomcat.embed:tomcat-embed-websocket@10.1.59",
+    "pm_bump_verified": false,
+    "pm_bump_reasons": [
+     "vuln-not-cleared"
+    ],
+    "pm_bump_cleared": "2/11",
+    "agent_instances": 10
+   }
+  ],
+  "fig:failures": {
+   "deps-unresolved": 54,
+   "vuln-not-cleared": 78,
+   "build-broken": 16,
+   "tests-regressed": 15
+  },
+  "fig:failures_note": "first failed gate = reasons[0]; goparrot-geocoder's verification-scan-failed counts as rescan",
+  "tab:causes": {
+   "Vulnerability remediation": 77,
+   "still_vulnerable": 2,
+   "partial_fix": 75,
+   "no_upgrade": 0,
+   "Version compatibility": 54,
+   "dependency_constraints": 25,
+   "runtime_constraint": 26,
+   "toolchain_constraint": 3,
+   "Code compatibility": 28,
+   "api_build": 13,
+   "missing_at_runtime": 12,
+   "behaviour": 3,
+   "Other": 4,
+   "other": 4,
+   "failed": 163
+  },
+  "tab:causes_rule_counts": {
+   "failure_causes": 122,
+   "package-manager-bump override": 13,
+   "package-manager-bump rule: Poetry re-lock fails on the target's Python floor": 26,
+   "package-manager-bump rule: locked package removed from PyPI": 2
+  },
+  "tab:causes_by_fail_cause_gate": {
+   "dependencies/dependency_constraints": 24,
+   "rescan/partial_fix": 75,
+   "tests/missing_at_runtime": 12,
+   "build/api_build": 12,
+   "build/dependency_constraints": 1,
+   "dependencies/other": 3,
+   "dependencies/runtime_constraint": 26,
+   "rescan/other": 1,
+   "rescan/still_vulnerable": 2,
+   "tests/behaviour": 3,
+   "build/toolchain_constraint": 3,
+   "dependencies/api_build": 1
+  },
+  "category_labels": {
+   "still_vulnerable": "Upgraded to still-vulnerable version",
+   "partial_fix": "Still reachable via another path",
+   "no_upgrade": "No upgrade made, or reverted",
+   "dependency_constraints": "Resolver rejects dependency versions",
+   "runtime_constraint": "Fix requires newer Python",
+   "toolchain_constraint": "Dependencies need newer TypeScript",
+   "api_build": "Changed API breaks build",
+   "missing_at_runtime": "Class or method missing at runtime",
+   "behaviour": "Changed behaviour fails tests",
+   "other": "Other (environment, rescan failure)"
+  },
+  "families": {
+   "Vulnerability remediation": [
+    "still_vulnerable",
+    "partial_fix",
+    "no_upgrade"
+   ],
+   "Version compatibility": [
+    "dependency_constraints",
+    "runtime_constraint",
+    "toolchain_constraint"
+   ],
+   "Code compatibility": [
+    "api_build",
+    "missing_at_runtime",
+    "behaviour"
+   ],
+   "Other": [
+    "other"
+   ]
+  },
+  "overrides": {
+   "vpulim-node-soap:0": {
+    "category": "api_build",
+    "reason": "install's `prepare` script runs tsc: src/http.ts TS2339/TS2345 on axios 1.20 header types"
+   },
+   "encode-django-rest-framework:1": {
+    "category": "other",
+    "reason": "pyyaml 5.4 has no cp311 wheel and its sdist fails under Cython 3 ('build_ext' has no attribute 'cython_sources')"
+   },
+   "fmtn-a:7": {
+    "category": "dependency_constraints",
+    "reason": "org.graalvm.js:js 24.1.0 is published as a POM, so the jar the pom declares does not resolve (agents added <type>pom</type>)"
+   },
+   "airbnb-knowledge-repo:2": {
+    "category": "partial_fix",
+    "reason": "pin overridden: jinja2==3.1.6 written, knowledge_repo/_version.py keeps 3.0.3 (as the Evo Remediation Agent's nbconvert override)"
+   },
+   "airbnb-knowledge-repo:9": {
+    "category": "partial_fix",
+    "reason": "pin overridden: werkzeug==3.1.9 written, knowledge_repo/_version.py keeps 2.0.3 (as the Evo Remediation Agent's nbconvert override)"
+   },
+   "goparrot-geocoder:0": {
+    "category": "other",
+    "reason": "verification rescan failed (new lockfile scanned as 8 dependencies); no rescan result for the target"
+   },
+   "assertj-assertj-guava:1": {
+    "category": "dependency_constraints",
+    "reason": "maven-enforcer BannedDependencies rejects net.bytebuddy:byte-buddy 1.18.3 pulled in by assertj-core 3.27.7"
+   },
+   "lettuce-io-lettuce-core:0": {
+    "category": "toolchain_constraint",
+    "reason": "kotlin-maven-plugin 1.5.30 cannot read micrometer-core 1.16.7 Kotlin metadata 1.7.0"
+   },
+   "lettuce-io-lettuce-core:6": {
+    "category": "toolchain_constraint",
+    "reason": "kotlin-stdlib 2.1.0 metadata incompatible with the project's Kotlin 1.5 compiler"
+   },
+   "santiq-bulletproof-nodejs:5": {
+    "category": "api_build",
+    "reason": "src/api/middlewares/isAuth.ts TS2349: express-jwt 7 default export is not callable"
+   },
+   "alphagov-pay-adminusers:0": {
+    "category": "missing_at_runtime",
+    "reason": "logback-classic 1.6.3 needs slf4j 2: cannot access org.slf4j.spi.LoggingEventAware"
+   },
+   "jericks-geoserver-shell:0": {
+    "category": "behaviour",
+    "reason": "org.json 20231013: JSONObject getString on an integer now throws JSONException"
+   },
+   "knaufk-flink-faker:0": {
+    "category": "missing_at_runtime",
+    "reason": "junit-jupiter fails to discover tests after flink 1.20 test deps; the Evo Remediation Agent's PASS also raised junit 5.8.2 -> 5.10.1"
+   }
+  },
+  "by_attempt": [
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 0,
+    "label": "requirements.txt: flask@2.1.2 -> flask@3.1.3",
+    "reasons": [
+     "deps-unresolved",
+     "verification-scan-failed",
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "ERROR: Cannot install -r requirements.txt (line 4) and jinja2<=3.0.3 and >=2.7 because these package versions have conflicting dependencies.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 1,
+    "label": "requirements.txt: gitpython@3.1.18 -> gitpython@3.1.60",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: requirements.txt",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 2,
+    "label": "requirements.txt: jinja2@3.0.3 -> jinja2@3.1.6",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "wrong_version",
+    "category": "partial_fix",
+    "rule": "package-manager-bump override",
+    "evidence": "pin overridden: jinja2==3.1.6 written, knowledge_repo/_version.py keeps 3.0.3 (as the Evo Remediation Agent's nbconvert override)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 3,
+    "label": "requirements.txt: markdown@3.3.4 -> markdown@3.8.1",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: requirements.txt",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 4,
+    "label": "requirements.txt: mistune@0.8.4 -> mistune@3.3.3",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "api_migration",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "E   AttributeError: module 'mistune' has no attribute 'BlockGrammar'",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 5,
+    "label": "requirements.txt: nbconvert@5.6.1 -> nbconvert@7.17.1",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: requirements.txt",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 6,
+    "label": "requirements.txt: pygments@2.10.0 -> pygments@2.20.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: requirements.txt",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 7,
+    "label": "requirements.txt: urllib3@1.26.20 -> urllib3@2.8.0",
+    "reasons": [
+     "deps-unresolved",
+     "verification-scan-failed",
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "ERROR: Cannot install -r requirements.txt (line 2) and urllib3==2.8.0 because these package versions have conflicting dependencies.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 8,
+    "label": "requirements.txt: weasyprint@54.3 -> weasyprint@70.0",
+    "reasons": [
+     "deps-unresolved",
+     "verification-scan-failed",
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "ERROR: Cannot install weasyprint==54.3 and weasyprint==70.0 because these package versions have conflicting dependencies.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "airbnb-knowledge-repo",
+    "group_index": 9,
+    "label": "requirements.txt: werkzeug@2.0.3 -> werkzeug@3.1.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "within_major",
+    "category": "partial_fix",
+    "rule": "package-manager-bump override",
+    "evidence": "pin overridden: werkzeug==3.1.9 written, knowledge_repo/_version.py keeps 2.0.3 (as the Evo Remediation Agent's nbconvert override)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "alphagov-pay-adminusers",
+    "group_index": 0,
+    "label": "pom.xml: ch.qos.logback:logback-classic@1.2.11 -> ch.qos.logback:logback-classic@1.6.3",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "other_broken",
+    "category": "missing_at_runtime",
+    "rule": "package-manager-bump override",
+    "evidence": "logback-classic 1.6.3 needs slf4j 2: cannot access org.slf4j.spi.LoggingEventAware",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "alphagov-pay-adminusers",
+    "group_index": 6,
+    "label": "pom.xml: io.dropwizard:dropwizard-client@2.0.29 -> io.dropwizard:dropwizard-client@3.0.12",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/uk/gov/pay/adminusers/app/config/RestClientConfig.java:[3,21] package io.dropwizard does not exist",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "alphagov-pay-adminusers",
+    "group_index": 7,
+    "label": "pom.xml: io.dropwizard:dropwizard-core@2.0.29 -> io.dropwizard:dropwizard-core@5.0.2",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/uk/gov/pay/adminusers/app/config/RestClientConfig.java:[3,21] package io.dropwizard does not exist",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "alphagov-pay-adminusers",
+    "group_index": 8,
+    "label": "pom.xml: io.dropwizard:dropwizard-json-logging@2.0.29 -> io.dropwizard:dropwizard-json-logging@5.0.2",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "1 moved of 1 uncleared",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "alphagov-pay-adminusers",
+    "group_index": 9,
+    "label": "pom.xml: io.dropwizard:dropwizard-migrations@2.0.29 -> io.dropwizard:dropwizard-migrations@2.1.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dropwizard-migrations 2.0.29 -> 2.1.0 (target 2.1.0)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "alphagov-pay-cardid",
+    "group_index": 3,
+    "label": "pom.xml: io.dropwizard:dropwizard-core@2.0.28 -> io.dropwizard:dropwizard-core@5.0.2",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dropwizard-core 2.0.28 -> 5.0.2 (target 5.0.2)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "alphagov-pay-cardid",
+    "group_index": 4,
+    "label": "pom.xml: io.dropwizard:dropwizard-json-logging@2.0.28 -> io.dropwizard:dropwizard-json-logging@5.0.2",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dropwizard-json-logging 2.0.28 -> 5.0.2 (target 5.0.2)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "alphagov-pay-cardid",
+    "group_index": 5,
+    "label": "pom.xml: io.dropwizard:dropwizard-testing@2.0.28 -> io.dropwizard:dropwizard-testing@3.0.12",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dropwizard-testing 2.0.28 -> 3.0.12 (target 3.0.12)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "assertj-assertj-guava",
+    "group_index": 1,
+    "label": "pom.xml: org.assertj:assertj-core@3.22.0 -> org.assertj:assertj-core@3.27.7",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "other_broken",
+    "category": "dependency_constraints",
+    "rule": "package-manager-bump override",
+    "evidence": "maven-enforcer BannedDependencies rejects net.bytebuddy:byte-buddy 1.18.3 pulled in by assertj-core 3.27.7",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "assertj-assertj-vavr",
+    "group_index": 0,
+    "label": "pom.xml: org.assertj:assertj-core@3.22.0 -> org.assertj:assertj-core@3.27.7",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/org/assertj/vavr/api/VavrAssumptions.java:[24,43] package org.assertj.core.internal.bytebuddy does not exist",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "camunda-community-hub-camunda-platform-7-mockito",
+    "group_index": 3,
+    "label": "pom.xml: org.camunda.bpm:camunda-engine@7.18.0 -> org.camunda.bpm:camunda-engine@7.24.0",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/org/camunda/community/mockito/task/LockedExternalTaskFake.java:[14,8] org.camunda.community.mockito.task.LockedExternalTaskFake is no",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "citerus-dddsample-core",
+    "group_index": 1,
+    "label": "pom.xml: org.apache.activemq:activemq-broker@5.15.9 -> org.apache.activemq:activemq-broker@5.19.11",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "activemq-broker 5.15.9 -> 5.19.11 (target 5.19.11)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "citerus-dddsample-core",
+    "group_index": 4,
+    "label": "pom.xml: org.seleniumhq.selenium:htmlunit-driver@2.29.3 -> org.seleniumhq.selenium:htmlunit-driver@4.8.1",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "htmlunit-driver 2.29.3 -> 4.8.1 (target 4.8.1)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "citerus-dddsample-core",
+    "group_index": 5,
+    "label": "pom.xml: org.seleniumhq.selenium:selenium-java@3.9.1 -> org.seleniumhq.selenium:selenium-java@4.0.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "selenium-java 3.9.1 -> 4.0.0 (target 4.0.0)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "citerus-dddsample-core",
+    "group_index": 6,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-activemq@2.0.9.RELEASE -> org.springframework.boot:spring-boot-starter-activemq@4.0.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-activemq 2.0.9.RELEASE -> 4.0.0 (target 4.0.0)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "citerus-dddsample-core",
+    "group_index": 7,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-data-jpa@2.0.9.RELEASE -> org.springframework.boot:spring-boot-starter-data-jpa@3.5.15",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-data-jpa 2.0.9.RELEASE -> 3.5.15 (target 3.5.15)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "citerus-dddsample-core",
+    "group_index": 8,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-test@2.0.9.RELEASE -> org.springframework.boot:spring-boot-starter-test@3.5.14",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-test 2.0.9.RELEASE -> 3.5.14 (target 3.5.14)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "citerus-dddsample-core",
+    "group_index": 9,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-thymeleaf@2.0.9.RELEASE -> org.springframework.boot:spring-boot-starter-thymeleaf@4.0.8",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-thymeleaf 2.0.9.RELEASE -> 4.0.8 (target 4.0.8)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "citerus-dddsample-core",
+    "group_index": 10,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-web@2.0.9.RELEASE -> org.springframework.boot:spring-boot-starter-web@4.0.0",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-web 2.0.9.RELEASE -> 4.0.0 (target 4.0.0)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "encode-django-rest-framework",
+    "group_index": 1,
+    "label": "requirements.txt: pyyaml@5.3.1 -> pyyaml@5.4",
+    "reasons": [
+     "deps-unresolved",
+     "verification-scan-failed",
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "other",
+    "rule": "package-manager-bump override",
+    "evidence": "pyyaml 5.4 has no cp311 wheel and its sdist fails under Cython 3 ('build_ext' has no attribute 'cython_sources')",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "ewjoachim-poetry-to-pre-commit",
+    "group_index": 0,
+    "label": "pyproject.toml: cryptography@43.0.1 -> cryptography@49.0.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because poetry-to-pre-commit depends on cryptography (49.0.0) which requires Python !=3.9.0,!=3.9.1,>=3.9, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "ewjoachim-poetry-to-pre-commit",
+    "group_index": 1,
+    "label": "pyproject.toml: dulwich@0.21.7 -> dulwich@1.2.9",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because poetry-to-pre-commit depends on dulwich (1.2.9) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "ewjoachim-poetry-to-pre-commit",
+    "group_index": 2,
+    "label": "pyproject.toml: filelock@3.13.1 -> filelock@3.20.3",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because poetry-to-pre-commit depends on filelock (3.20.3) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "ewjoachim-poetry-to-pre-commit",
+    "group_index": 4,
+    "label": "pyproject.toml: msgpack@1.0.8 -> msgpack@1.2.1",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because poetry-to-pre-commit depends on msgpack (1.2.1) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "ewjoachim-poetry-to-pre-commit",
+    "group_index": 5,
+    "label": "pyproject.toml: poetry@1.8.2 -> poetry@2.3.4",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because poetry-to-pre-commit depends on poetry (2.3.4) which requires Python <4.0,>=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "ewjoachim-poetry-to-pre-commit",
+    "group_index": 6,
+    "label": "pyproject.toml: requests@2.32.0 -> requests@2.33.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because poetry-to-pre-commit depends on requests (2.33.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "ewjoachim-poetry-to-pre-commit",
+    "group_index": 7,
+    "label": "pyproject.toml: urllib3@2.2.2 -> urllib3@2.8.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because poetry-to-pre-commit depends on urllib3 (2.8.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "ewjoachim-poetry-to-pre-commit",
+    "group_index": 8,
+    "label": "pyproject.toml: virtualenv@20.25.1 -> virtualenv@21.7.13",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because poetry-to-pre-commit depends on virtualenv (21.7.13) which requires Python >=3.9, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "expressjs-generator",
+    "group_index": 3,
+    "label": "package-lock.json: mkdirp@0.5.1 -> mkdirp@0.5.5",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "mkdirp 0.5.1 -> 0.5.5 (target 0.5.5)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "fmtn-a",
+    "group_index": 5,
+    "label": "pom.xml: org.apache.activemq:artemis-jms-client@2.28.0 -> org.apache.activemq:artemis-jms-client@2.50.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "30 moved of 30 uncleared",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "fmtn-a",
+    "group_index": 7,
+    "label": "pom.xml: org.graalvm.js:js@22.3.2 -> org.graalvm.js:js@24.1.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "package-manager-bump override",
+    "evidence": "org.graalvm.js:js 24.1.0 is published as a POM, so the jar the pom declares does not resolve (agents added <type>pom</type>)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "goparrot-geocoder",
+    "group_index": 0,
+    "label": "package.json: class-validator@0.13.2 -> class-validator@0.14.0",
+    "reasons": [
+     "verification-scan-failed",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "other",
+    "rule": "package-manager-bump override",
+    "evidence": "verification rescan failed (new lockfile scanned as 8 dependencies); no rescan result for the target",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "hagopj13-node-express-boilerplate",
+    "group_index": 10,
+    "label": "yarn.lock: pm2@5.1.0 -> pm2@6.0.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "pm2 5.1.0 -> 6.0.9 (target 6.0.9)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "hagopj13-node-express-boilerplate",
+    "group_index": 11,
+    "label": "yarn.lock: swagger-jsdoc@6.1.0 -> swagger-jsdoc@6.3.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "swagger-jsdoc 6.1.0 -> 6.3.0 (target 6.3.0)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "hantsy-nestjs-rest-sample",
+    "group_index": 2,
+    "label": "package-lock.json: @nestjs/core@11.0.10 -> @nestjs/core@11.1.18",
+    "reasons": [
+     "build-broken"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "node_modules/@nestjs/core/nest-application-context.d.ts:2:40 - error TS2305: Module '\"@nestjs/common/interfaces\"' has no exported member 'ShutdownHooksOptions'.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "hantsy-nestjs-rest-sample",
+    "group_index": 3,
+    "label": "package-lock.json: @nestjs/platform-express@11.0.8 -> @nestjs/platform-express@11.2.6",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "@nestjs/platform-express 11.0.8 -> 11.2.6 (target 11.2.6)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "hantsy-nestjs-rest-sample",
+    "group_index": 5,
+    "label": "package-lock.json: mongoose@8.10.1 -> mongoose@8.24.1",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "src/auth/auth.service.ts:32:20 - error TS2352: Conversion of type '{ id: Types.ObjectId; username: string; email: string; roles: RoleType[]; }' to type 'UserPri",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "hisatri-lrcapi",
+    "group_index": 1,
+    "label": "requirements.txt: flask@3.0.3 -> flask@3.1.3",
+    "reasons": [
+     "deps-unresolved",
+     "verification-scan-failed",
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "ERROR: Cannot install -r requirements.txt (line 1) and Werkzeug~=3.0.1 because these package versions have conflicting dependencies.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 1,
+    "label": "pom.xml: net.sf.jasperreports:jasperreports@6.20.0 -> net.sf.jasperreports:jasperreports@7.0.8",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/org/isf/serviceprinting/manager/PrintReceipt.java:[48,35] cannot find symbol",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 5,
+    "label": "pom.xml: org.hibernate:hibernate-c3p0@5.6.14.Final -> org.hibernate:hibernate-c3p0@6.0.0.Final",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "4 moved of 4 uncleared",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 6,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-test@2.7.5 -> org.springframework.boot:spring-boot-starter-test@3.5.15",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "binary_incompat",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "java.lang.NoClassDefFoundError: org/springframework/aot/AotDetector",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 7,
+    "label": "pom.xml: org.springframework.boot:spring-boot-test@2.7.5 -> org.springframework.boot:spring-boot-test@3.5.14",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "binary_incompat",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "java.lang.NoClassDefFoundError: org/springframework/aot/AotDetector",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 8,
+    "label": "pom.xml: org.springframework.cloud:spring-cloud-starter-openfeign@3.1.5 -> org.springframework.cloud:spring-cloud-starter-openfeign@5.0.3",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/org/isf/sms/providers/common/CustomCommonDecoder.java:[49,68] incompatible types: org.springframework.beans.factory.ObjectFactory<org",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 9,
+    "label": "pom.xml: org.springframework.data:spring-data-jpa@2.7.6 -> org.springframework.data:spring-data-jpa@3.5.12",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "binary_incompat",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: Unexpected exception parsing XML document from class path resource [applicationContex",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 10,
+    "label": "pom.xml: org.springframework:spring-beans@5.3.24 -> org.springframework:spring-beans@7.0.9",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "binary_incompat",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "Caused by: java.lang.ClassNotFoundException: jakarta.persistence.EntityManagerFactory",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 11,
+    "label": "pom.xml: org.springframework:spring-context@5.3.24 -> org.springframework:spring-context@7.0.9",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "binary_incompat",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "Caused by: java.lang.ClassNotFoundException: jakarta.persistence.EntityManagerFactory",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 12,
+    "label": "pom.xml: org.springframework:spring-core@5.3.24 -> org.springframework:spring-core@6.2.18",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "wrong_version",
+    "category": "still_vulnerable",
+    "rule": "failure_causes",
+    "evidence": "spring-core 5.3.24 -> 6.2.18 (target 6.2.18); chosen version still vulnerable",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "informatici-openhospital-core",
+    "group_index": 13,
+    "label": "pom.xml: org.springframework:spring-webmvc@5.3.24 -> org.springframework:spring-webmvc@7.0.9",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "binary_incompat",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "Caused by: java.lang.ClassNotFoundException: jakarta.persistence.EntityManagerFactory",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "internetofwater-nldi-services",
+    "group_index": 0,
+    "label": "pom.xml: com.fasterxml.jackson.core:jackson-databind@2.13.4.2 -> com.fasterxml.jackson.core:jackson-databind@2.18.11",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "jackson-databind 2.13.4.2 -> 2.18.11 (target 2.18.11)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "internetofwater-nldi-services",
+    "group_index": 3,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-actuator@2.7.5 -> org.springframework.boot:spring-boot-starter-actuator@3.5.12",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-actuator 2.7.5 -> 3.5.12 (target 3.5.12)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "internetofwater-nldi-services",
+    "group_index": 4,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-security@2.7.5 -> org.springframework.boot:spring-boot-starter-security@4.0.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-security 2.7.5 -> 4.0.0 (target 4.0.0)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "internetofwater-nldi-services",
+    "group_index": 5,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-test@2.7.5 -> org.springframework.boot:spring-boot-starter-test@3.5.14",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-test 2.7.5 -> 3.5.14 (target 3.5.14)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "internetofwater-nldi-services",
+    "group_index": 6,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-web@2.7.5 -> org.springframework.boot:spring-boot-starter-web@4.0.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-web 2.7.5 -> 4.0.0 (target 4.0.0)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "jericks-geoserver-shell",
+    "group_index": 0,
+    "label": "pom.xml: org.json:json@20090211 -> org.json:json@20231013",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "other_broken",
+    "category": "behaviour",
+    "rule": "package-manager-bump override",
+    "evidence": "org.json 20231013: JSONObject getString on an integer now throws JSONException",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "knaufk-flink-faker",
+    "group_index": 0,
+    "label": "pom.xml: org.apache.flink:flink-streaming-java@1.15.0 -> org.apache.flink:flink-streaming-java@1.20.4",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "other_broken",
+    "category": "missing_at_runtime",
+    "rule": "package-manager-bump override",
+    "evidence": "junit-jupiter fails to discover tests after flink 1.20 test deps; the Evo Remediation Agent's PASS also raised junit 5.8.2 -> 5.10.1",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "knaufk-flink-faker",
+    "group_index": 1,
+    "label": "pom.xml: org.apache.flink:flink-table-api-java-bridge@1.15.0 -> org.apache.flink:flink-table-api-java-bridge@2.0.0",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "flink-table-api-java-bridge 1.15.0 -> 2.0.0 (target 2.0.0)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 0,
+    "label": "package-lock.json: bcrypt@5.0.1 -> bcrypt@6.0.0",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 1,
+    "label": "package-lock.json: body-parser@1.19.0 -> body-parser@1.20.8",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 2,
+    "label": "package-lock.json: bullmq@1.46.4 -> bullmq@6.0.0",
+    "reasons": [
+     "deps-unresolved",
+     "build-broken"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 3,
+    "label": "package-lock.json: class-validator@0.13.1 -> class-validator@0.14.0",
+    "reasons": [
+     "deps-unresolved",
+     "build-broken"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 4,
+    "label": "package-lock.json: express@4.17.1 -> express@4.22.3",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 5,
+    "label": "package-lock.json: glob@7.1.7 -> glob@12.0.0",
+    "reasons": [
+     "deps-unresolved",
+     "build-broken"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 6,
+    "label": "package-lock.json: jsonwebtoken@8.5.1 -> jsonwebtoken@9.0.0",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 7,
+    "label": "package-lock.json: mailgen@2.0.15 -> mailgen@2.0.32",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 8,
+    "label": "package-lock.json: multer@1.4.3 -> multer@2.3.0",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 9,
+    "label": "package-lock.json: mysql2@2.3.0 -> mysql2@3.23.1",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 10,
+    "label": "package-lock.json: nodemailer@6.6.3 -> nodemailer@10.0.6",
+    "reasons": [
+     "deps-unresolved",
+     "build-broken"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 11,
+    "label": "package-lock.json: routing-controllers@0.9.0 -> routing-controllers@0.11.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 12,
+    "label": "package-lock.json: routing-controllers-openapi@3.1.0 -> routing-controllers-openapi@4.0.0",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 13,
+    "label": "package-lock.json: socket-controllers@0.0.5 -> socket-controllers@0.1.0",
+    "reasons": [
+     "deps-unresolved",
+     "build-broken"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 14,
+    "label": "package-lock.json: socket.io@3.1.2 -> socket.io@4.8.0",
+    "reasons": [
+     "deps-unresolved",
+     "build-broken"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 15,
+    "label": "package-lock.json: swagger-ui-express@4.1.6 -> swagger-ui-express@4.3.0",
+    "reasons": [
+     "deps-unresolved"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 16,
+    "label": "package-lock.json: typeorm@0.2.37 -> typeorm@1.0.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared",
+     "build-broken"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "kutia-software-company-express-typescript-starter",
+    "group_index": 17,
+    "label": "package-lock.json: typeorm-simple-query-parser@1.0.16 -> typeorm-simple-query-parser@1.0.17",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "npm error code ERESOLVE",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "lettuce-io-lettuce-core",
+    "group_index": 0,
+    "label": "pom.xml: io.micrometer:micrometer-core@1.7.7 -> io.micrometer:micrometer-core@1.16.7",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "other_broken",
+    "category": "toolchain_constraint",
+    "rule": "package-manager-bump override",
+    "evidence": "kotlin-maven-plugin 1.5.30 cannot read micrometer-core 1.16.7 Kotlin metadata 1.7.0",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "lettuce-io-lettuce-core",
+    "group_index": 2,
+    "label": "pom.xml: io.netty:netty-handler@4.1.75.Final -> io.netty:netty-handler@4.1.137.Final",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "netty-handler 4.1.75.Final -> 4.1.137.Final (target 4.1.137.Final)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "lettuce-io-lettuce-core",
+    "group_index": 3,
+    "label": "pom.xml: io.netty:netty-resolver-dns@4.1.75.Final -> io.netty:netty-resolver-dns@4.1.136.Final",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "netty-resolver-dns 4.1.75.Final -> 4.1.136.Final (target 4.1.136.Final)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "lettuce-io-lettuce-core",
+    "group_index": 4,
+    "label": "pom.xml: io.netty:netty-transport-native-epoll@4.1.75.Final -> io.netty:netty-transport-native-epoll@4.1.135.Final",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "netty-transport-native-epoll 4.1.75.Final -> 4.1.135.Final (target 4.1.135.Final)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "lettuce-io-lettuce-core",
+    "group_index": 5,
+    "label": "pom.xml: io.projectreactor:reactor-core@3.4.14 -> io.projectreactor:reactor-core@3.8.7",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "api_migration",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/test/java/io/lettuce/core/commands/reactive/TransactionReactiveCommandIntegrationTests.java:[55,33] cannot find symbol",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "lettuce-io-lettuce-core",
+    "group_index": 6,
+    "label": "pom.xml: org.jetbrains.kotlin:kotlin-stdlib@1.5.30 -> org.jetbrains.kotlin:kotlin-stdlib@2.1.0",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "other_broken",
+    "category": "toolchain_constraint",
+    "rule": "package-manager-bump override",
+    "evidence": "kotlin-stdlib 2.1.0 metadata incompatible with the project's Kotlin 1.5 compiler",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "lookfirst-sardine",
+    "group_index": 1,
+    "label": "pom.xml: org.apache.httpcomponents:httpclient@4.5.1 -> org.apache.httpcomponents:httpclient@4.5.13",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "behaviour_change",
+    "category": "behaviour",
+    "rule": "failure_causes",
+    "evidence": "Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec <<< FAILURE! - in com.github.sardine.impl.SardineExceptionTest",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "pac4j-dropwizard-pac4j",
+    "group_index": 0,
+    "label": "pom.xml: io.dropwizard:dropwizard-core@2.0.17 -> io.dropwizard:dropwizard-core@5.0.2",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dropwizard-core 2.0.17 -> 5.0.2 (target 5.0.2)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "pac4j-dropwizard-pac4j",
+    "group_index": 1,
+    "label": "pom.xml: io.dropwizard:dropwizard-testing@2.0.17 -> io.dropwizard:dropwizard-testing@3.0.12",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "1 moved of 1 uncleared",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "pac4j-dropwizard-pac4j",
+    "group_index": 2,
+    "label": "pom.xml: org.pac4j:pac4j-core@4.5.7 -> org.pac4j:pac4j-core@6.5.6",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/org/pac4j/dropwizard/Pac4jFactory.java:[393,19] method setProfileManagerFactory in class org.pac4j.core.config.Config cannot be appli",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "pkiraly-qa-catalogue",
+    "group_index": 1,
+    "label": "pom.xml: com.fasterxml.jackson.core:jackson-databind@2.13.4.2 -> com.fasterxml.jackson.core:jackson-databind@2.18.11",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "binary_incompat",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "java.lang.NoSuchMethodError: 'void com.fasterxml.jackson.core.util.BufferRecycler.releaseToPool()'",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "pkiraly-qa-catalogue",
+    "group_index": 4,
+    "label": "pom.xml: de.gwdg.metadataqa:metadata-qa-api@0.8.1 -> de.gwdg.metadataqa:metadata-qa-api@0.9.8",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "1 moved of 1 uncleared",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "pkiraly-qa-catalogue",
+    "group_index": 8,
+    "label": "pom.xml: org.apache.solr:solr-solrj@9.1.0 -> org.apache.solr:solr-solrj@10.0.0",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/de/gwdg/metadataqa/marc/datastore/MarcSolrClient.java:[5,41] cannot find symbol",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "pkiraly-qa-catalogue",
+    "group_index": 9,
+    "label": "pom.xml: org.apache.spark:spark-core_2.12@3.3.1 -> org.apache.spark:spark-core_2.12@3.5.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spark-core_2.12 3.3.1 -> 3.5.9 (target 3.5.9)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "pkiraly-qa-catalogue",
+    "group_index": 10,
+    "label": "pom.xml: org.apache.spark:spark-sql_2.13@3.3.1 -> org.apache.spark:spark-sql_2.13@3.5.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "4 moved of 4 uncleared",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "predict-idlab-plotly-resampler",
+    "group_index": 0,
+    "label": "pyproject.toml: cryptography@43.0.3 -> cryptography@49.0.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because plotly-resampler depends on cryptography (49.0.0) which requires Python !=3.9.0,!=3.9.1,>=3.9, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "predict-idlab-plotly-resampler",
+    "group_index": 1,
+    "label": "pyproject.toml: flask@3.0.3 -> flask@3.1.3",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because plotly-resampler depends on flask (3.1.3) which requires Python >=3.9, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "predict-idlab-plotly-resampler",
+    "group_index": 2,
+    "label": "pyproject.toml: flask-cors@4.0.2 -> flask-cors@6.0.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because plotly-resampler depends on flask-cors (6.0.0) which requires Python <4.0,>=3.9, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "predict-idlab-plotly-resampler",
+    "group_index": 5,
+    "label": "pyproject.toml: orjson@3.10.15 -> orjson@3.11.6",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because plotly-resampler depends on orjson (3.11.6) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "predict-idlab-plotly-resampler",
+    "group_index": 6,
+    "label": "pyproject.toml: pyopenssl@25.0.0 -> pyopenssl@26.0.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because no versions of cryptography match >46.0.0,!=46.0.1,!=46.0.2,!=46.0.3,!=46.0.4,!=46.0.5,!=46.0.6,!=46.0.7,<47",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "predict-idlab-plotly-resampler",
+    "group_index": 7,
+    "label": "pyproject.toml: requests@2.32.3 -> requests@2.33.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because plotly-resampler depends on requests (2.33.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "predict-idlab-plotly-resampler",
+    "group_index": 8,
+    "label": "pyproject.toml: urllib3@1.26.20 -> urllib3@2.8.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because plotly-resampler depends on urllib3 (2.8.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "predict-idlab-plotly-resampler",
+    "group_index": 9,
+    "label": "pyproject.toml: werkzeug@3.0.6 -> werkzeug@3.1.9",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because plotly-resampler depends on werkzeug (3.1.9) which requires Python >=3.9, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 0,
+    "label": "pyproject.toml: anyio@4.8.0 -> anyio@4.14.2",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on anyio (4.14.2) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 1,
+    "label": "pyproject.toml: filelock@3.16.1 -> filelock@3.20.3",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on filelock (3.20.3) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 2,
+    "label": "pyproject.toml: fsspec@2024.12.0 -> fsspec@2026.6.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on fsspec (2026.6.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 3,
+    "label": "pyproject.toml: h11@0.14.0 -> h11@0.16.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "other",
+    "rule": "package-manager-bump rule: locked package removed from PyPI",
+    "evidence": "Package onnxruntime-gpu (1.20.1) not found.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 4,
+    "label": "pyproject.toml: h2@4.1.0 -> h2@4.4.1",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on h2 (4.4.1) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 5,
+    "label": "pyproject.toml: hpack@4.0.0 -> hpack@4.2.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on hpack (4.2.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 6,
+    "label": "pyproject.toml: idna@3.10 -> idna@3.15",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "other",
+    "rule": "package-manager-bump rule: locked package removed from PyPI",
+    "evidence": "Package onnxruntime-gpu (1.20.1) not found.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 7,
+    "label": "pyproject.toml: onnxruntime@1.19.2 -> onnxruntime@1.24.1",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on onnxruntime (1.24.1) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 8,
+    "label": "pyproject.toml: pillow@10.4.0 -> pillow@12.3.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on pillow (12.3.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 9,
+    "label": "pyproject.toml: protobuf@3.20.3 -> protobuf@5.29.6",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "dependency_constraints",
+    "rule": "failure_causes",
+    "evidence": "WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a v",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 10,
+    "label": "pyproject.toml: requests@2.32.3 -> requests@2.33.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on requests (2.33.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qdrant-qdrant-client",
+    "group_index": 11,
+    "label": "pyproject.toml: urllib3@2.3.0 -> urllib3@2.8.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because qdrant-client depends on urllib3 (2.8.0) which requires Python >=3.10, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qqxx6661-log-record",
+    "group_index": 3,
+    "label": "pom.xml: org.apache.rocketmq:rocketmq-client@4.9.2 -> org.apache.rocketmq:rocketmq-client@5.1.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "rocketmq-client 4.9.2 -> 5.1.0 (target 5.1.0)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "qqxx6661-log-record",
+    "group_index": 4,
+    "label": "pom.xml: org.springframework.amqp:spring-rabbit@2.3.8 -> org.springframework.amqp:spring-rabbit@4.1.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "wrong_version",
+    "category": "still_vulnerable",
+    "rule": "failure_causes",
+    "evidence": "spring-rabbit 2.3.8 -> 4.1.0 (target 4.1.0); chosen version still vulnerable",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "qqxx6661-log-record",
+    "group_index": 5,
+    "label": "pom.xml: org.springframework.boot:spring-boot-autoconfigure@2.5.1 -> org.springframework.boot:spring-boot-autoconfigure@3.5.15",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-autoconfigure 2.5.1 -> 3.5.15 (target 3.5.15)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "qqxx6661-log-record",
+    "group_index": 6,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-aop@2.5.1 -> org.springframework.boot:spring-boot-starter-aop@3.5.15",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-aop 2.5.1 -> 3.5.15 (target 3.5.15)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "qqxx6661-log-record",
+    "group_index": 7,
+    "label": "pom.xml: org.springframework.boot:spring-boot-starter-test@2.5.1 -> org.springframework.boot:spring-boot-starter-test@3.5.14",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-boot-starter-test 2.5.1 -> 3.5.14 (target 3.5.14)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "qqxx6661-log-record",
+    "group_index": 8,
+    "label": "pom.xml: org.springframework.cloud:spring-cloud-stream@3.0.7.RELEASE -> org.springframework.cloud:spring-cloud-stream@5.0.3",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-cloud-stream 3.0.7.RELEASE -> 5.0.3 (target 5.0.3)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "retest-recheck-cli",
+    "group_index": 0,
+    "label": "pom.xml: ch.qos.logback:logback-classic@1.2.11 -> ch.qos.logback:logback-classic@1.6.3",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "behaviour_change",
+    "category": "behaviour",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.023 s <<< FAILURE! - in de.retest.recheck.cli.utils.SystemInUtilTest",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "santiq-bulletproof-nodejs",
+    "group_index": 1,
+    "label": "package-lock.json: argon2@0.27.0 -> argon2@0.27.2",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "argon2 0.27.0 -> 0.27.2 (target 0.27.2)",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "santiq-bulletproof-nodejs",
+    "group_index": 5,
+    "label": "package-lock.json: express-jwt@6.0.0 -> express-jwt@7.7.8",
+    "reasons": [
+     "build-broken"
+    ],
+    "first_gate": "build",
+    "v4_cause": "other_broken",
+    "category": "api_build",
+    "rule": "package-manager-bump override",
+    "evidence": "src/api/middlewares/isAuth.ts TS2349: express-jwt 7 default export is not callable",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "santiq-bulletproof-nodejs",
+    "group_index": 10,
+    "label": "package-lock.json: mongoose@5.12.3 -> mongoose@6.13.10",
+    "reasons": [
+     "build-broken"
+    ],
+    "first_gate": "build",
+    "v4_cause": "old_toolchain",
+    "category": "toolchain_constraint",
+    "rule": "failure_causes",
+    "evidence": "node_modules/mongoose/node_modules/mongodb/mongodb.d.ts:4217:117 - error TS1005: '?' expected.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 0,
+    "label": "samples/spring-freemarker/build.gradle.kts: ch.qos.logback:logback-classic@1.5.34 -> ch.qos.logback:logback-classic@1.6.3",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "logback-classic 1.5.34 -> 1.6.3 (target 1.6.3)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 3,
+    "label": "samples/spring-freemarker/build.gradle.kts: com.fasterxml.jackson.core:jackson-databind@2.21.4 -> com.fasterxml.jackson.core:jackson-databind@2.21.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "jackson-databind 2.21.4 -> 2.21.7 (target 2.21.7)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 4,
+    "label": "samples/spring-freemarker/build.gradle.kts: com.fasterxml.jackson.datatype:jackson-datatype-jdk8@2.21.4 -> com.fasterxml.jackson.datatype:jackson-datatype-jdk8@2.21.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "jackson-datatype-jdk8 2.21.4 -> 2.21.7 (target 2.21.7)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 5,
+    "label": "samples/spring-freemarker/build.gradle.kts: com.fasterxml.jackson.datatype:jackson-datatype-jsr310@2.21.4 -> com.fasterxml.jackson.datatype:jackson-datatype-jsr310@2.21.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "jackson-datatype-jsr310 2.21.4 -> 2.21.7 (target 2.21.7)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 6,
+    "label": "samples/spring-freemarker/build.gradle.kts: com.fasterxml.jackson.module:jackson-module-parameter-names@2.21.4 -> com.fasterxml.jackson.module:jackson-module-parameter-names@2.21.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "jackson-module-parameter-names 2.21.4 -> 2.21.7 (target 2.21.7)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 8,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.apache.logging.log4j:log4j-to-slf4j@2.24.3 -> org.apache.logging.log4j:log4j-to-slf4j@2.25.5",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "log4j-to-slf4j 2.24.3 -> 2.25.5 (target 2.25.5)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 10,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.apache.tomcat.embed:tomcat-embed-websocket@10.1.55 -> org.apache.tomcat.embed:tomcat-embed-websocket@10.1.60",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "tomcat-embed-websocket 10.1.55 -> 10.1.60 (target 10.1.60)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 12,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.springframework.boot:spring-boot-starter-freemarker@3.5.16 -> org.springframework.boot:spring-boot-starter-freemarker@4.0.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "2 moved of 2 uncleared",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 14,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.springframework.boot:spring-boot-starter-tomcat@3.5.16 -> org.springframework.boot:spring-boot-starter-tomcat@4.0.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "11 moved of 11 uncleared",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 15,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.springframework.boot:spring-boot-starter-web@3.5.16 -> org.springframework.boot:spring-boot-starter-web@4.0.0",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "9 moved of 9 uncleared",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 16,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.springframework:spring-aop@6.2.19 -> org.springframework:spring-aop@7.0.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-aop 6.2.19 -> 7.0.9 (target 7.0.9)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 18,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.springframework:spring-context@6.2.19 -> org.springframework:spring-context@7.0.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-context 6.2.19 -> 7.0.9 (target 7.0.9)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 19,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.springframework:spring-context-support@6.2.19 -> org.springframework:spring-context-support@7.0.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-context-support 6.2.19 -> 7.0.9 (target 7.0.9)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 21,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.springframework:spring-web@6.2.19 -> org.springframework:spring-web@7.0.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-web 6.2.19 -> 7.0.9 (target 7.0.9)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 22,
+    "label": "samples/spring-freemarker/build.gradle.kts: org.springframework:spring-webmvc@6.2.19 -> org.springframework:spring-webmvc@7.0.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "other_unfixed",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "spring-webmvc 6.2.19 -> 7.0.9 (target 7.0.9)",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 23,
+    "label": "samples/spring-i18n/build.gradle.kts: ch.qos.logback:logback-classic@1.5.34 -> ch.qos.logback:logback-classic@1.6.3",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 26,
+    "label": "samples/spring-i18n/build.gradle.kts: com.fasterxml.jackson.core:jackson-databind@2.21.4 -> com.fasterxml.jackson.core:jackson-databind@2.21.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 27,
+    "label": "samples/spring-i18n/build.gradle.kts: com.fasterxml.jackson.datatype:jackson-datatype-jdk8@2.21.4 -> com.fasterxml.jackson.datatype:jackson-datatype-jdk8@2.21.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 28,
+    "label": "samples/spring-i18n/build.gradle.kts: com.fasterxml.jackson.datatype:jackson-datatype-jsr310@2.21.4 -> com.fasterxml.jackson.datatype:jackson-datatype-jsr310@2.21.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 29,
+    "label": "samples/spring-i18n/build.gradle.kts: com.fasterxml.jackson.module:jackson-module-parameter-names@2.21.4 -> com.fasterxml.jackson.module:jackson-module-parameter-names@2.21.7",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 31,
+    "label": "samples/spring-i18n/build.gradle.kts: org.apache.logging.log4j:log4j-to-slf4j@2.24.3 -> org.apache.logging.log4j:log4j-to-slf4j@2.25.5",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 33,
+    "label": "samples/spring-i18n/build.gradle.kts: org.apache.tomcat.embed:tomcat-embed-websocket@10.1.55 -> org.apache.tomcat.embed:tomcat-embed-websocket@10.1.60",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 35,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework.boot:spring-boot-starter-freemarker@3.5.16 -> org.springframework.boot:spring-boot-starter-freemarker@4.0.0",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "2 moved of 2 uncleared",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 37,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework.boot:spring-boot-starter-tomcat@3.5.16 -> org.springframework.boot:spring-boot-starter-tomcat@4.0.0",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "11 moved of 11 uncleared",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 38,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework.boot:spring-boot-starter-web@3.5.16 -> org.springframework.boot:spring-boot-starter-web@4.0.0",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "moved",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "9 moved of 9 uncleared",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 39,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework:spring-aop@6.2.19 -> org.springframework:spring-aop@7.0.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 40,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework:spring-beans@6.2.19 -> org.springframework:spring-beans@7.0.9",
+    "reasons": [
+     "tests-regressed"
+    ],
+    "first_gate": "tests",
+    "v4_cause": "binary_incompat",
+    "category": "missing_at_runtime",
+    "rule": "failure_causes",
+    "evidence": "Caused by: java.lang.NoSuchMethodError: 'org.springframework.core.type.classreading.MetadataReaderFactory org.springframework.core.type.classreading.MetadataRea",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 41,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework:spring-context@6.2.19 -> org.springframework:spring-context@7.0.9",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 42,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework:spring-context-support@6.2.19 -> org.springframework:spring-context-support@7.0.9",
+    "reasons": [
+     "vuln-not-cleared"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 44,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework:spring-web@6.2.19 -> org.springframework:spring-web@7.0.9",
+    "reasons": [
+     "vuln-not-cleared",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "tokuhirom-java-handbook",
+    "group_index": 45,
+    "label": "samples/spring-i18n/build.gradle.kts: org.springframework:spring-webmvc@6.2.19 -> org.springframework:spring-webmvc@7.0.9",
+    "reasons": [
+     "vuln-not-cleared",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "rescan",
+    "v4_cause": "transitive_pin",
+    "category": "partial_fix",
+    "rule": "failure_causes",
+    "evidence": "dependency files changed, target untouched: samples/spring-i18n/build.gradle.kts",
+    "pm_bump_managed": true
+   },
+   {
+    "case": "vpulim-node-soap",
+    "group_index": 0,
+    "label": "package-lock.json: axios@1.7.9 -> axios@1.20.0",
+    "reasons": [
+     "deps-unresolved",
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "api_build",
+    "rule": "package-manager-bump override",
+    "evidence": "install's `prepare` script runs tsc: src/http.ts TS2339/TS2345 on axios 1.20 header types",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "wemake-services-wemake-python-styleguide",
+    "group_index": 2,
+    "label": "pyproject.toml: pygments@2.17.2 -> pygments@2.20.0",
+    "reasons": [
+     "deps-unresolved",
+     "vuln-not-cleared"
+    ],
+    "first_gate": "dependencies",
+    "v4_cause": "dep_conflict",
+    "category": "runtime_constraint",
+    "rule": "package-manager-bump rule: Poetry re-lock fails on the target's Python floor",
+    "evidence": "Because wemake-python-styleguide depends on pygments (2.20.0) which requires Python >=3.9, version solving failed.",
+    "pm_bump_managed": false
+   },
+   {
+    "case": "wmaarts-pitest-mutation-testing-elements-plugin",
+    "group_index": 0,
+    "label": "pom.xml: org.pitest:pitest-entry@1.9.11 -> org.pitest:pitest-entry@1.20.7",
+    "reasons": [
+     "build-broken",
+     "tests-regressed"
+    ],
+    "first_gate": "build",
+    "v4_cause": "api_migration",
+    "category": "api_build",
+    "rule": "failure_causes",
+    "evidence": "[ERROR] /app/src/main/java/org/pitest/elements/MutationReportListener.java:[10,23] cannot find symbol",
+    "pm_bump_managed": false
+   }
+  ]
+ }
+}

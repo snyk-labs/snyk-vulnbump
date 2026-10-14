@@ -1,0 +1,8 @@
+// Cap parallel test JVMs. Kafka's build forks one per CPU (32 here) at up to
+// 3 GB heap each, and an agent's `gradlew test` took the host down with it.
+// whenReady runs after the build scripts, so it wins over their own setting.
+gradle.taskGraph.whenReady { graph ->
+    graph.allTasks.findAll { it instanceof Test }.each { t ->
+        t.maxParallelForks = Math.min(t.maxParallelForks, 4)
+    }
+}

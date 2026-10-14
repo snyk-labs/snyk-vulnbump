@@ -1,0 +1,23 @@
+// Point Maven Central repositories at the local cache (see nginx.conf).
+def mirror = System.getenv('MAVEN_MIRROR_URL')
+
+def redirect = { RepositoryHandler repos ->
+    repos.withType(MavenArtifactRepository).configureEach { r ->
+        if (mirror && r.url.toString().startsWith('https://repo.maven.apache.org/maven2')) {
+            r.url = mirror
+            r.allowInsecureProtocol = true
+        }
+    }
+}
+
+beforeSettings { settings ->
+    redirect(settings.pluginManagement.repositories)
+    redirect(settings.buildscript.repositories)
+}
+settingsEvaluated { settings ->
+    redirect(settings.dependencyResolutionManagement.repositories)
+}
+allprojects {
+    redirect(buildscript.repositories)
+    redirect(repositories)
+}

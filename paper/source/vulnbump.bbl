@@ -1,0 +1,159 @@
+\begin{thebibliography}{10}
+
+\bibitem{claudecode}
+{Anthropic}.
+\newblock {Claude Code} documentation.
+\newblock \url{https://code.claude.com/docs/en/overview}.
+\newblock Accessed: 2026-10-06.
+
+\bibitem{claudecodetools}
+{Anthropic}.
+\newblock {Claude Code} tools reference.
+\newblock \url{https://code.claude.com/docs/en/tools-reference}.
+\newblock Accessed: 2026-10-08.
+
+\bibitem{anthropicmodels}
+{Anthropic}.
+\newblock Models overview.
+\newblock \url{https://platform.claude.com/docs/en/models/overview}.
+\newblock Accessed: 2026-10-07.
+
+\bibitem{cipollone2026libevobench}
+Daniele Cipollone, Sergey Titov, Maliheh Izadi, Egor Bogomolov, and Arie van
+  Deursen.
+\newblock {LibEvoBench}: Probing temporal knowledge stratification in code
+  generation models, 2026.
+\newblock arXiv:2606.25402. DL4Code Workshop at ICML 2026.
+
+\bibitem{davison1997bootstrap}
+Anthony~C. Davison and David~V. Hinkley.
+\newblock {\em Bootstrap Methods and their Application}.
+\newblock Cambridge University Press, 1997.
+
+\bibitem{efron1993bootstrap}
+Bradley Efron and Robert~J. Tibshirani.
+\newblock {\em An Introduction to the Bootstrap}.
+\newblock Chapman \& Hall, 1993.
+
+\bibitem{jimenez2024swebench}
+Carlos~E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir
+  Press, and Karthik Narasimhan.
+\newblock {SWE-bench}: Can language models resolve real-world {GitHub} issues?
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2024.
+
+\bibitem{lei2025pcreq}
+Huashan Lei, Guanping Xiao, Yepang Liu, and Zheng Zheng.
+\newblock {PCREQ}: Automated inference of compatible requirements for {Python}
+  third-party library upgrades.
+\newblock {\em ACM Transactions on Software Engineering and Methodology}, 2026.
+
+\bibitem{li2023gosvi}
+Wenke Li, Feng Wu, Cai Fu, and Fan Zhou.
+\newblock A large-scale empirical study on semantic versioning in {Golang}
+  ecosystem.
+\newblock In {\em Proceedings of the 38th IEEE/ACM International Conference on
+  Automated Software Engineering (ASE)}, pages 1604--1614, 2023.
+
+\bibitem{luo2026depbench}
+Zijian Luo, Runzhi He, Pengfei Gao, Yu~Kang, Zeqi Lin, Minghua Ma, Qingwei Lin,
+  Saravan Rajmohan, and Yongqiang Tian.
+\newblock Update from hell: Can coding agents survive hidden breakage in
+  dependency upgrades?
+\newblock 2026. arXiv:2608.30300.
+
+\bibitem{misra2026gitchameleon}
+Diganta Misra, Nizar Islah, Victor May, Brice Rauby, Zihan Wang, Justine
+  Gehring, Antonio Orvieto, Muawiz~Sajjad Chaudhary, Eilif~B. Muller, Irina
+  Rish, Samira~Ebrahimi Kahou, and Massimo Caccia.
+\newblock {GitChameleon} 2.0: Evaluating {AI} code generation against {Python}
+  library version incompatibilities.
+\newblock In {\em Proceedings of the 64th Annual Meeting of the Association for
+  Computational Linguistics (ACL)}, pages 46792--46831, 2026.
+
+\bibitem{ochoa2022breakingbad}
+Lina Ochoa, Thomas Degueule, Jean-R{\'e}my Falleri, and Jurgen Vinju.
+\newblock Breaking bad? {Semantic} versioning and impact of breaking changes in
+  {Maven Central}: An external and differentiated replication study.
+\newblock {\em Empirical Software Engineering}, 27(3):61, 2022.
+
+\bibitem{osv}
+{Open Source Vulnerabilities}.
+\newblock {OSV}: A distributed vulnerability database for open source.
+\newblock \url{https://osv.dev/}.
+\newblock Accessed: 2026-10-06.
+
+\bibitem{raemaekers2017semver}
+Steven Raemaekers, Arie van Deursen, and Joost Visser.
+\newblock Semantic versioning and impact of breaking changes in the {Maven}
+  repository.
+\newblock {\em Journal of Systems and Software}, 129:140--158, 2017.
+
+\bibitem{raj2026breakguard}
+Rachna Raj, Benoit Baudry, and Diego~Elias Costa.
+\newblock {BreakGuard}: Towards detecting dependency breaking changes with
+  {LLM}-generated tests, 2026.
+\newblock arXiv:2608.20167.
+
+\bibitem{reyes2026bigbag}
+Frank Reyes, Benoit Baudry, and Martin Monperrus.
+\newblock Agentic generation of {AST} transformation rules for fixing breaking
+  updates, 2026.
+\newblock arXiv:2606.24446.
+
+\bibitem{reyes2024bump}
+Frank Reyes, Yogya Gamage, Gabriel Skoglund, Benoit Baudry, and Martin
+  Monperrus.
+\newblock {BUMP}: A benchmark of reproducible breaking dependency updates.
+\newblock In {\em Proceedings of the IEEE International Conference on Software
+  Analysis, Evolution and Reengineering (SANER)}, pages 159--170, 2024.
+
+\bibitem{reyes2025byam}
+Frank Reyes, May Mahmoud, Federico Bono, Sarah Nadi, Benoit Baudry, and Martin
+  Monperrus.
+\newblock {Byam}: Fixing breaking dependency updates with large language
+  models.
+\newblock {\em Empirical Software Engineering}, 31(4):113, 2026.
+
+\bibitem{snykfixdocs}
+{Snyk}.
+\newblock Fix your vulnerabilities.
+\newblock
+  \url{https://docs.snyk.io/scan-fix-and-prevent/scan-with-snyk/snyk-open-source/manage-vulnerabilities/fix-your-vulnerabilities}.
+\newblock Accessed: 2026-10-09.
+
+\bibitem{snykcli}
+{Snyk}.
+\newblock {Snyk CLI} documentation.
+\newblock \url{https://docs.snyk.io/developer-tools/snyk-cli/overview}.
+\newblock Accessed: 2026-10-06.
+
+\bibitem{snykopensource}
+{Snyk}.
+\newblock {Snyk Open Source} documentation.
+\newblock
+  \url{https://docs.snyk.io/scan-fix-and-prevent/scan-with-snyk/snyk-open-source}.
+\newblock Accessed: 2026-10-08.
+
+\bibitem{tawosi2025ladu}
+Vali Tawosi, Salwa Alamir, Xiaomo Liu, and Manuela Veloso.
+\newblock {LLM} agents for automated dependency upgrades.
+\newblock In {\em AISM Workshop at the 40th IEEE/ACM International Conference
+  on Automated Software Engineering (ASE)}, 2025.
+
+\bibitem{yang2026deprepair}
+Shenghao Yang, Bo~Lu, Yaochen Liu, Yu~Kang, Qiongfang Zhang, Chetan Bansal,
+  Saravan Rajmohan, and Minghua Ma.
+\newblock {DepRepair}: {LLM}-based source-code repair for dependency breaking
+  changes, 2026.
+\newblock arXiv:2607.17957.
+
+\bibitem{zhang2023coral}
+Lyuye Zhang, Chengwei Liu, Zhengzi Xu, Sen Chen, Lingling Fan, Lida Zhao,
+  Jiahui Wu, and Yang Liu.
+\newblock Compatible remediation on vulnerabilities from third-party libraries
+  for {Java} projects.
+\newblock In {\em Proceedings of the 45th IEEE/ACM International Conference on
+  Software Engineering (ICSE)}, pages 2540--2552, 2023.
+
+\end{thebibliography}

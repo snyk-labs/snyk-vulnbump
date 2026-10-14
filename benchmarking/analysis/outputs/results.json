@@ -1,0 +1,1989 @@
+{
+ "meta": {
+  "evo-remediation-agent": {
+   "generated_at": "2026-10-05T17:29:05.341251+00:00",
+   "git_sha": "5305349",
+   "llm": {
+    "model": "claude-sonnet-5-5",
+    "price_in_per_mtok": 2.0,
+    "price_out_per_mtok": 10.0,
+    "provider": "vertex"
+   },
+   "cli": {
+    "binary_sha256": "683df459c5c18b648d7af1f5490676a14e0ddf575af5de343611f8f4e8883025",
+    "mode": "local",
+    "cli_commit": "e8f912fefda20e68255040dedf970fe388d665a3",
+    "snyk_version": "0.1.0-preview.aaf12cb834b35ca9cac3b537639e1c76a6df4303"
+   },
+   "fairness": {
+    "agent_access": {
+     "evo-remediation-agent-single-upgrade": {
+      "snyk_access": true
+     }
+    },
+    "agent_max_iterations": 0,
+    "claude_input_tokens_include_cache": true,
+    "claude_turns_per_upgrade": 110,
+    "control": "claude-code@2.1.289",
+    "same_model_all_agents": true,
+    "strict_collateral": false,
+    "turn_budget": "evo-remediation-agent: 100/fix (+10 breakability), fresh per retry round, own setup budget; claude: 110 x upgrades, pooled"
+   }
+  },
+  "claude-code-snyk-scan": {
+   "generated_at": "2026-10-05T09:26:51.499938+00:00",
+   "git_sha": "3863936",
+   "llm": {
+    "model": "claude-sonnet-5-5",
+    "price_in_per_mtok": 2.0,
+    "price_out_per_mtok": 10.0,
+    "provider": "vertex"
+   },
+   "cli": {
+    "binary_sha256": "683df459c5c18b648d7af1f5490676a14e0ddf575af5de343611f8f4e8883025",
+    "mode": "local",
+    "cli_commit": "e8f912fefda20e68255040dedf970fe388d665a3",
+    "snyk_version": "0.1.0-preview.aaf12cb834b35ca9cac3b537639e1c76a6df4303"
+   },
+   "fairness": {
+    "agent_access": {
+     "claude-code-snyk-scan-single-upgrade": {
+      "snyk_access": true
+     }
+    },
+    "agent_max_iterations": 0,
+    "claude_input_tokens_include_cache": true,
+    "claude_turns_per_upgrade": 110,
+    "control": "claude-code@2.1.289",
+    "same_model_all_agents": true,
+    "strict_collateral": false,
+    "turn_budget": "evo-remediation-agent: 100/fix (+10 breakability), fresh per retry round, own setup budget; claude: 110 x upgrades, pooled"
+   }
+  },
+  "claude-code-unaided": {
+   "generated_at": "2026-10-04T19:27:22.470905+00:00",
+   "git_sha": "3863936",
+   "llm": {
+    "model": "claude-sonnet-5-5",
+    "price_in_per_mtok": 2.0,
+    "price_out_per_mtok": 10.0,
+    "provider": "vertex"
+   },
+   "cli": {
+    "binary_sha256": "a05616067374993a760eadbc151a4d6cb8928cd984e2bcaff0251d71a4ba04ba",
+    "mode": "local",
+    "cli_commit": "d8c489a53023c0f0418a6a3a9619081a6f0fcccf",
+    "snyk_version": "0.1.0-preview.dd75097601d590eaddd76e0c38eff9ffedfc087f"
+   },
+   "fairness": {
+    "agent_access": {
+     "claude-code-unaided-single-upgrade": {
+      "snyk_access": false
+     }
+    },
+    "agent_max_iterations": 0,
+    "claude_input_tokens_include_cache": true,
+    "claude_turns_per_upgrade": 110,
+    "control": "claude-code@2.1.289",
+    "same_model_all_agents": true,
+    "strict_collateral": false,
+    "turn_budget": "evo-remediation-agent: 100/fix (+10 breakability), fresh per retry round, own setup budget; claude: 110 x upgrades, pooled"
+   }
+  },
+  "package-manager-bump": {
+   "generated_at": "2026-10-08T11:55:46.688054+00:00",
+   "git_sha": "82195aa",
+   "llm": {
+    "model": "",
+    "price_in_per_mtok": 0.0,
+    "price_out_per_mtok": 0.0,
+    "provider": ""
+   },
+   "cli": {
+    "binary_sha256": "683df459c5c18b648d7af1f5490676a14e0ddf575af5de343611f8f4e8883025",
+    "mode": "local",
+    "cli_commit": "e8f912fefda20e68255040dedf970fe388d665a3",
+    "snyk_version": "0.1.0-preview.aaf12cb834b35ca9cac3b537639e1c76a6df4303"
+   },
+   "fairness": {
+    "agent_access": {
+     "package-manager-bump-single-upgrade": {
+      "snyk_access": false
+     }
+    },
+    "agent_max_iterations": 0,
+    "claude_input_tokens_include_cache": true,
+    "claude_turns_per_upgrade": 110,
+    "control": "claude-code@2.1.289",
+    "same_model_all_agents": false,
+    "strict_collateral": false,
+    "turn_budget": "evo-remediation-agent: 100/fix (+10 breakability), fresh per retry round, own setup budget; claude: 110 x upgrades, pooled"
+   }
+  },
+  "package-manager-bump-min": {
+   "generated_at": "2026-10-08T13:14:40.447875+00:00",
+   "git_sha": "82195aa",
+   "llm": {
+    "model": "",
+    "price_in_per_mtok": 0.0,
+    "price_out_per_mtok": 0.0,
+    "provider": ""
+   },
+   "cli": {
+    "binary_sha256": "683df459c5c18b648d7af1f5490676a14e0ddf575af5de343611f8f4e8883025",
+    "mode": "local",
+    "cli_commit": "e8f912fefda20e68255040dedf970fe388d665a3",
+    "snyk_version": "0.1.0-preview.aaf12cb834b35ca9cac3b537639e1c76a6df4303"
+   },
+   "fairness": {
+    "agent_access": {
+     "package-manager-bump-min-single-upgrade": {
+      "snyk_access": false
+     }
+    },
+    "agent_max_iterations": 0,
+    "claude_input_tokens_include_cache": true,
+    "claude_turns_per_upgrade": 110,
+    "control": "claude-code@2.1.289",
+    "same_model_all_agents": false,
+    "strict_collateral": false,
+    "turn_budget": "evo-remediation-agent: 100/fix (+10 breakability), fresh per retry round, own setup budget; claude: 110 x upgrades, pooled"
+   }
+  }
+ },
+ "headline": {
+  "evo-remediation-agent": {
+   "repos": 43,
+   "attempts": 307,
+   "verified": 277,
+   "rate": 0.902,
+   "macro_rate": 0.931,
+   "rate_ci95_report": [
+    0.886,
+    0.974
+   ],
+   "macro_ci95_recomputed": [
+    0.8812854458203295,
+    0.9707272056109265
+   ],
+   "fixable_total": 2066,
+   "fixable_cleared": 1982,
+   "cleared_rate": 0.959,
+   "macro_cleared_rate": 0.976,
+   "cleared_ci95": [
+    0.952,
+    0.995
+   ],
+   "deps_ok_rate": 1.0,
+   "build_ok_rate": 0.967,
+   "tests_kept_rate": 0.954,
+   "green_rate": 0.928,
+   "tests_modified": 51,
+   "tests_modified_pass": 42,
+   "introduced_count": 1234,
+   "introduced_by_severity": {
+    "high": 703,
+    "low": 13,
+    "medium": 518
+   },
+   "remaining_by_severity": {
+    "high": 35,
+    "low": 14,
+    "medium": 35
+   },
+   "attempts_introducing": 62,
+   "unrelated_bumps": 74,
+   "snyk_policy_modified": 0,
+   "claimed_not_fixed": 1,
+   "timed_out": 0,
+   "turn_capped": 1,
+   "harness_errors": 0,
+   "input_tokens": 303637453,
+   "output_tokens": 3548517,
+   "turns_median": 10,
+   "repos_all_pass": 32,
+   "repos_zero_pass": 0,
+   "macro_cleared_ci95_recomputed": [
+    0.9518152808740176,
+    0.9944903927007115
+   ],
+   "macro_cleared_recomputed": 0.975940357296888
+  },
+  "claude-code-snyk-scan": {
+   "repos": 43,
+   "attempts": 307,
+   "verified": 238,
+   "rate": 0.775,
+   "macro_rate": 0.801,
+   "rate_ci95_report": [
+    0.712,
+    0.88
+   ],
+   "macro_ci95_recomputed": [
+    0.7097718774715076,
+    0.8788872818210001
+   ],
+   "fixable_total": 2066,
+   "fixable_cleared": 1716,
+   "cleared_rate": 0.831,
+   "macro_cleared_rate": 0.901,
+   "cleared_ci95": [
+    0.842,
+    0.952
+   ],
+   "deps_ok_rate": 0.948,
+   "build_ok_rate": 0.98,
+   "tests_kept_rate": 0.99,
+   "green_rate": 0.928,
+   "tests_modified": 26,
+   "tests_modified_pass": 24,
+   "introduced_count": 623,
+   "introduced_by_severity": {
+    "high": 336,
+    "low": 12,
+    "medium": 275
+   },
+   "remaining_by_severity": {
+    "high": 143,
+    "low": 40,
+    "medium": 167
+   },
+   "attempts_introducing": 30,
+   "unrelated_bumps": 26,
+   "snyk_policy_modified": 0,
+   "claimed_not_fixed": 2,
+   "timed_out": 0,
+   "turn_capped": 0,
+   "harness_errors": 0,
+   "input_tokens": 60385752,
+   "output_tokens": 667605,
+   "turns_median": 6,
+   "repos_all_pass": 22,
+   "repos_zero_pass": 2,
+   "macro_cleared_ci95_recomputed": [
+    0.841443005877483,
+    0.9511012536341602
+   ],
+   "macro_cleared_recomputed": 0.9014223139219761
+  },
+  "claude-code-unaided": {
+   "repos": 43,
+   "attempts": 307,
+   "verified": 183,
+   "rate": 0.596,
+   "macro_rate": 0.68,
+   "rate_ci95_report": [
+    0.577,
+    0.776
+   ],
+   "macro_ci95_recomputed": [
+    0.5816869804002608,
+    0.7698357117688513
+   ],
+   "fixable_total": 2066,
+   "fixable_cleared": 1503,
+   "cleared_rate": 0.727,
+   "macro_cleared_rate": 0.807,
+   "cleared_ci95": [
+    0.721,
+    0.885
+   ],
+   "deps_ok_rate": 0.954,
+   "build_ok_rate": 0.984,
+   "tests_kept_rate": 0.987,
+   "green_rate": 0.938,
+   "tests_modified": 22,
+   "tests_modified_pass": 18,
+   "introduced_count": 797,
+   "introduced_by_severity": {
+    "high": 462,
+    "low": 7,
+    "medium": 328
+   },
+   "remaining_by_severity": {
+    "high": 282,
+    "low": 58,
+    "medium": 223
+   },
+   "attempts_introducing": 33,
+   "unrelated_bumps": 34,
+   "snyk_policy_modified": 0,
+   "claimed_not_fixed": 70,
+   "timed_out": 0,
+   "turn_capped": 0,
+   "harness_errors": 0,
+   "input_tokens": 45201807,
+   "output_tokens": 596239,
+   "turns_median": 6,
+   "repos_all_pass": 15,
+   "repos_zero_pass": 3,
+   "macro_cleared_ci95_recomputed": [
+    0.7220553475870658,
+    0.8815337330608489
+   ],
+   "macro_cleared_recomputed": 0.8073804409368934
+  },
+  "package-manager-bump": {
+   "repos": 43,
+   "attempts": 307,
+   "verified": 144,
+   "rate": 0.469,
+   "macro_rate": 0.513,
+   "rate_ci95_report": [
+    0.404,
+    0.626
+   ],
+   "macro_ci95_recomputed": [
+    0.39723345326732584,
+    0.6231314626840411
+   ],
+   "fixable_total": 2072,
+   "fixable_cleared": 1170,
+   "cleared_rate": 0.565,
+   "macro_cleared_rate": 0.725,
+   "cleared_ci95": [
+    0.597,
+    0.835
+   ],
+   "deps_ok_rate": 0.824,
+   "build_ok_rate": 0.87,
+   "tests_kept_rate": 0.805,
+   "green_rate": 0.642,
+   "tests_modified": 0,
+   "tests_modified_pass": 0,
+   "introduced_count": 259,
+   "introduced_by_severity": {
+    "high": 131,
+    "low": 5,
+    "medium": 123
+   },
+   "remaining_by_severity": {
+    "high": 472,
+    "low": 88,
+    "medium": 342
+   },
+   "attempts_introducing": 30,
+   "unrelated_bumps": 0,
+   "snyk_policy_modified": 0,
+   "claimed_not_fixed": 81,
+   "timed_out": 0,
+   "turn_capped": 0,
+   "harness_errors": 0,
+   "input_tokens": 0,
+   "output_tokens": 0,
+   "turns_median": null,
+   "repos_all_pass": 10,
+   "repos_zero_pass": 10,
+   "macro_cleared_ci95_recomputed": [
+    0.6106916582166482,
+    0.8323559748353517
+   ],
+   "macro_cleared_recomputed": 0.7250307596550922
+  },
+  "package-manager-bump-min": {
+   "repos": 8,
+   "attempts": 60,
+   "verified": 19,
+   "rate": 0.317,
+   "macro_rate": 0.431,
+   "rate_ci95_report": [
+    0.164,
+    0.697
+   ],
+   "macro_ci95_recomputed": [
+    0.175,
+    0.6833333333333333
+   ],
+   "fixable_total": 293,
+   "fixable_cleared": 124,
+   "cleared_rate": 0.423,
+   "macro_cleared_rate": 0.527,
+   "cleared_ci95": [
+    0.193,
+    0.871
+   ],
+   "deps_ok_rate": 0.45,
+   "build_ok_rate": 0.933,
+   "tests_kept_rate": 0.9,
+   "green_rate": 0.417,
+   "tests_modified": 0,
+   "tests_modified_pass": 0,
+   "introduced_count": 0,
+   "introduced_by_severity": {},
+   "remaining_by_severity": {
+    "high": 98,
+    "low": 7,
+    "medium": 64
+   },
+   "attempts_introducing": 0,
+   "unrelated_bumps": 0,
+   "snyk_policy_modified": 0,
+   "claimed_not_fixed": 6,
+   "timed_out": 0,
+   "turn_capped": 0,
+   "harness_errors": 0,
+   "input_tokens": 0,
+   "output_tokens": 0,
+   "turns_median": null,
+   "repos_all_pass": 1,
+   "repos_zero_pass": 2,
+   "macro_cleared_ci95_recomputed": [
+    0.18808373939238418,
+    0.8667167811481957
+   ],
+   "macro_cleared_recomputed": 0.5268158410271486
+  }
+ },
+ "eco": {
+  "evo-remediation-agent": {
+   "gradle": {
+    "repos": 3,
+    "attempts": 66,
+    "verified": 66,
+    "pooled": 1.0,
+    "macro": 1.0
+   },
+   "maven": {
+    "repos": 18,
+    "attempts": 106,
+    "verified": 88,
+    "pooled": 0.8301886792452831,
+    "macro": 0.8854818021484687
+   },
+   "npm": {
+    "repos": 11,
+    "attempts": 57,
+    "verified": 47,
+    "pooled": 0.8245614035087719,
+    "macro": 0.9365079365079366
+   },
+   "pip": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 17,
+    "pooled": 0.9444444444444444,
+    "macro": 0.9666666666666667
+   },
+   "poetry": {
+    "repos": 5,
+    "attempts": 42,
+    "verified": 41,
+    "pooled": 0.9761904761904762,
+    "macro": 0.9777777777777779
+   },
+   "yarn": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 18,
+    "pooled": 1.0,
+    "macro": 1.0
+   }
+  },
+  "claude-code-snyk-scan": {
+   "gradle": {
+    "repos": 3,
+    "attempts": 66,
+    "verified": 59,
+    "pooled": 0.8939393939393939,
+    "macro": 0.9286803966437834
+   },
+   "maven": {
+    "repos": 18,
+    "attempts": 106,
+    "verified": 78,
+    "pooled": 0.7358490566037735,
+    "macro": 0.7503006253006252
+   },
+   "npm": {
+    "repos": 11,
+    "attempts": 57,
+    "verified": 36,
+    "pooled": 0.631578947368421,
+    "macro": 0.7828282828282828
+   },
+   "pip": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 17,
+    "pooled": 0.9444444444444444,
+    "macro": 0.9666666666666667
+   },
+   "poetry": {
+    "repos": 5,
+    "attempts": 42,
+    "verified": 30,
+    "pooled": 0.7142857142857143,
+    "macro": 0.7244444444444443
+   },
+   "yarn": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 18,
+    "pooled": 1.0,
+    "macro": 1.0
+   }
+  },
+  "claude-code-unaided": {
+   "gradle": {
+    "repos": 3,
+    "attempts": 66,
+    "verified": 38,
+    "pooled": 0.5757575757575758,
+    "macro": 0.7456140350877193
+   },
+   "maven": {
+    "repos": 18,
+    "attempts": 106,
+    "verified": 56,
+    "pooled": 0.5283018867924528,
+    "macro": 0.53922759339426
+   },
+   "npm": {
+    "repos": 11,
+    "attempts": 57,
+    "verified": 38,
+    "pooled": 0.6666666666666666,
+    "macro": 0.8577200577200578
+   },
+   "pip": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 17,
+    "pooled": 0.9444444444444444,
+    "macro": 0.9333333333333332
+   },
+   "poetry": {
+    "repos": 5,
+    "attempts": 42,
+    "verified": 18,
+    "pooled": 0.42857142857142855,
+    "macro": 0.48999999999999994
+   },
+   "yarn": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 16,
+    "pooled": 0.8888888888888888,
+    "macro": 0.865079365079365
+   }
+  },
+  "package-manager-bump": {
+   "gradle": {
+    "repos": 3,
+    "attempts": 66,
+    "verified": 35,
+    "pooled": 0.5303030303030303,
+    "macro": 0.7753623188405797
+   },
+   "maven": {
+    "repos": 18,
+    "attempts": 106,
+    "verified": 44,
+    "pooled": 0.41509433962264153,
+    "macro": 0.31091871091871087
+   },
+   "npm": {
+    "repos": 11,
+    "attempts": 57,
+    "verified": 30,
+    "pooled": 0.5263157894736842,
+    "macro": 0.711038961038961
+   },
+   "pip": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 6,
+    "pooled": 0.3333333333333333,
+    "macro": 0.48888888888888893
+   },
+   "poetry": {
+    "repos": 5,
+    "attempts": 42,
+    "verified": 13,
+    "pooled": 0.30952380952380953,
+    "macro": 0.39555555555555555
+   },
+   "yarn": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 16,
+    "pooled": 0.8888888888888888,
+    "macro": 0.9523809523809524
+   }
+  },
+  "package-manager-bump-min": {
+   "pip": {
+    "repos": 3,
+    "attempts": 18,
+    "verified": 6,
+    "pooled": 0.3333333333333333,
+    "macro": 0.48888888888888893
+   },
+   "poetry": {
+    "repos": 5,
+    "attempts": 42,
+    "verified": 13,
+    "pooled": 0.30952380952380953,
+    "macro": 0.39555555555555555
+   }
+  }
+ },
+ "failures": {
+  "evo-remediation-agent": {
+   "first_reason": {
+    "vuln-not-cleared": 9,
+    "any:vuln-not-cleared": 9,
+    "tests-regressed": 12,
+    "any:tests-regressed": 14,
+    "build-broken": 9,
+    "any:build-broken": 10
+   },
+   "category": {
+    "binary-incompatibility": 4,
+    "dependency-conflict": 5,
+    "other": 8,
+    "removed-api": 3,
+    "test-assertion": 1,
+    "turn-cap": 1
+   }
+  },
+  "claude-code-snyk-scan": {
+   "first_reason": {
+    "tests-regressed": 2,
+    "any:tests-regressed": 3,
+    "vuln-not-cleared": 48,
+    "any:vuln-not-cleared": 50,
+    "build-broken": 3,
+    "any:build-broken": 6,
+    "deps-unresolved": 16,
+    "any:deps-unresolved": 16,
+    "any:verification-scan-failed": 1
+   },
+   "category": {
+    "dependency-conflict": 15,
+    "other": 5,
+    "removed-api": 1,
+    "test-assertion": 1
+   }
+  },
+  "claude-code-unaided": {
+   "first_reason": {
+    "vuln-not-cleared": 107,
+    "any:vuln-not-cleared": 112,
+    "any:tests-regressed": 4,
+    "build-broken": 3,
+    "any:build-broken": 5,
+    "deps-unresolved": 14,
+    "any:deps-unresolved": 14,
+    "any:verification-scan-failed": 2
+   },
+   "category": {
+    "dependency-conflict": 14,
+    "other": 5
+   }
+  },
+  "package-manager-bump": {
+   "first_reason": {
+    "deps-unresolved": 54,
+    "any:deps-unresolved": 54,
+    "any:verification-scan-failed": 6,
+    "any:vuln-not-cleared": 116,
+    "any:build-broken": 40,
+    "any:tests-regressed": 60,
+    "vuln-not-cleared": 77,
+    "tests-regressed": 15,
+    "build-broken": 16,
+    "verification-scan-failed": 1
+   },
+   "category": {
+    "api-signature-change": 3,
+    "binary-incompatibility": 19,
+    "dependency-conflict": 50,
+    "other": 14,
+    "removed-api": 22,
+    "test-assertion": 2
+   }
+  },
+  "package-manager-bump-min": {
+   "first_reason": {
+    "deps-unresolved": 33,
+    "any:deps-unresolved": 33,
+    "any:verification-scan-failed": 4,
+    "any:vuln-not-cleared": 39,
+    "any:build-broken": 4,
+    "any:tests-regressed": 6,
+    "vuln-not-cleared": 6,
+    "tests-regressed": 2
+   },
+   "category": {
+    "dependency-conflict": 31,
+    "other": 2,
+    "removed-api": 1,
+    "test-assertion": 1
+   }
+  }
+ },
+ "vulns": {
+  "evo-remediation-agent": {
+   "instances": 2066,
+   "by": {
+    "severity": {
+     "high": {
+      "n": 1035,
+      "cleared": 1000,
+      "safe": 831
+     },
+     "low": {
+      "n": 159,
+      "cleared": 145,
+      "safe": 92
+     },
+     "medium": {
+      "n": 872,
+      "cleared": 837,
+      "safe": 692
+     }
+    },
+    "difficulty": {
+     "major": {
+      "n": 520,
+      "cleared": 486,
+      "safe": 363
+     },
+     "minor": {
+      "n": 782,
+      "cleared": 764,
+      "safe": 645
+     },
+     "patch": {
+      "n": 713,
+      "cleared": 683,
+      "safe": 562
+     },
+     "unknown": {
+      "n": 51,
+      "cleared": 49,
+      "safe": 45
+     }
+    },
+    "direct": {
+     "direct": {
+      "n": 617,
+      "cleared": 600,
+      "safe": 559
+     },
+     "transitive": {
+      "n": 1449,
+      "cleared": 1382,
+      "safe": 1056
+     }
+    }
+   }
+  },
+  "claude-code-snyk-scan": {
+   "instances": 2066,
+   "by": {
+    "severity": {
+     "high": {
+      "n": 1035,
+      "cleared": 892,
+      "safe": 694
+     },
+     "low": {
+      "n": 159,
+      "cleared": 119,
+      "safe": 67
+     },
+     "medium": {
+      "n": 872,
+      "cleared": 705,
+      "safe": 533
+     }
+    },
+    "difficulty": {
+     "major": {
+      "n": 520,
+      "cleared": 354,
+      "safe": 288
+     },
+     "minor": {
+      "n": 782,
+      "cleared": 630,
+      "safe": 512
+     },
+     "patch": {
+      "n": 713,
+      "cleared": 685,
+      "safe": 477
+     },
+     "unknown": {
+      "n": 51,
+      "cleared": 47,
+      "safe": 17
+     }
+    },
+    "direct": {
+     "direct": {
+      "n": 617,
+      "cleared": 524,
+      "safe": 441
+     },
+     "transitive": {
+      "n": 1449,
+      "cleared": 1192,
+      "safe": 853
+     }
+    }
+   }
+  },
+  "claude-code-unaided": {
+   "instances": 2066,
+   "by": {
+    "severity": {
+     "high": {
+      "n": 1035,
+      "cleared": 753,
+      "safe": 411
+     },
+     "low": {
+      "n": 159,
+      "cleared": 101,
+      "safe": 30
+     },
+     "medium": {
+      "n": 872,
+      "cleared": 649,
+      "safe": 342
+     }
+    },
+    "difficulty": {
+     "major": {
+      "n": 520,
+      "cleared": 240,
+      "safe": 157
+     },
+     "minor": {
+      "n": 782,
+      "cleared": 579,
+      "safe": 348
+     },
+     "patch": {
+      "n": 713,
+      "cleared": 638,
+      "safe": 266
+     },
+     "unknown": {
+      "n": 51,
+      "cleared": 46,
+      "safe": 12
+     }
+    },
+    "direct": {
+     "direct": {
+      "n": 617,
+      "cleared": 473,
+      "safe": 383
+     },
+     "transitive": {
+      "n": 1449,
+      "cleared": 1030,
+      "safe": 400
+     }
+    }
+   }
+  },
+  "package-manager-bump": {
+   "instances": 2072,
+   "by": {
+    "severity": {
+     "high": {
+      "n": 1038,
+      "cleared": 566,
+      "safe": 292
+     },
+     "low": {
+      "n": 159,
+      "cleared": 71,
+      "safe": 33
+     },
+     "medium": {
+      "n": 875,
+      "cleared": 533,
+      "safe": 284
+     }
+    },
+    "difficulty": {
+     "major": {
+      "n": 520,
+      "cleared": 234,
+      "safe": 90
+     },
+     "minor": {
+      "n": 784,
+      "cleared": 559,
+      "safe": 306
+     },
+     "patch": {
+      "n": 716,
+      "cleared": 331,
+      "safe": 203
+     },
+     "unknown": {
+      "n": 52,
+      "cleared": 46,
+      "safe": 10
+     }
+    },
+    "direct": {
+     "direct": {
+      "n": 619,
+      "cleared": 447,
+      "safe": 254
+     },
+     "transitive": {
+      "n": 1453,
+      "cleared": 723,
+      "safe": 355
+     }
+    }
+   }
+  },
+  "package-manager-bump-min": {
+   "instances": 293,
+   "by": {
+    "severity": {
+     "high": {
+      "n": 171,
+      "cleared": 73,
+      "safe": 67
+     },
+     "low": {
+      "n": 8,
+      "cleared": 1,
+      "safe": 1
+     },
+     "medium": {
+      "n": 114,
+      "cleared": 50,
+      "safe": 41
+     }
+    },
+    "difficulty": {
+     "major": {
+      "n": 95,
+      "cleared": 20,
+      "safe": 6
+     },
+     "minor": {
+      "n": 124,
+      "cleared": 70,
+      "safe": 69
+     },
+     "patch": {
+      "n": 74,
+      "cleared": 34,
+      "safe": 34
+     }
+    },
+    "direct": {
+     "direct": {
+      "n": 127,
+      "cleared": 48,
+      "safe": 47
+     },
+     "transitive": {
+      "n": 166,
+      "cleared": 76,
+      "safe": 62
+     }
+    }
+   }
+  }
+ },
+ "paired": {
+  "evo-remediation-agent_vs_claude-code-snyk-scan": {
+   "n": 307,
+   "both": 231,
+   "only_evo-remediation-agent": 46,
+   "only_claude-code-snyk-scan": 7,
+   "neither": 23,
+   "mcnemar_exact_p": 4.003196174551249e-08,
+   "macro_diff": 0.13033401977843467,
+   "macro_diff_ci95": [
+    0.061601251458763044,
+    0.21377097414615373
+   ],
+   "repos_evo-remediation-agent_higher": 16,
+   "repos_claude-code-snyk-scan_higher": 2,
+   "repos_tied": 25
+  },
+  "evo-remediation-agent_vs_claude-code-unaided": {
+   "n": 307,
+   "both": 181,
+   "only_evo-remediation-agent": 96,
+   "only_claude-code-unaided": 2,
+   "neither": 28,
+   "mcnemar_exact_p": 3.0620424897058794e-26,
+   "macro_diff": 0.2513035142472107,
+   "macro_diff_ci95": [
+    0.1704475346664759,
+    0.34096652726778187
+   ],
+   "repos_evo-remediation-agent_higher": 27,
+   "repos_claude-code-unaided_higher": 1,
+   "repos_tied": 15
+  },
+  "claude-code-snyk-scan_vs_claude-code-unaided": {
+   "n": 307,
+   "both": 174,
+   "only_claude-code-snyk-scan": 64,
+   "only_claude-code-unaided": 9,
+   "neither": 60,
+   "mcnemar_exact_p": 2.378889919863532e-11,
+   "macro_diff": 0.12096949446877603,
+   "macro_diff_ci95": [
+    0.033472909224066684,
+    0.20313225513111755
+   ],
+   "repos_claude-code-snyk-scan_higher": 21,
+   "repos_claude-code-unaided_higher": 3,
+   "repos_tied": 19
+  }
+ },
+ "split": {
+  "package-manager-bump": {
+   "n": 307,
+   "advice_solvable": 144,
+   "rate": 0.46905537459283386,
+   "macro": 0.5126892936296374,
+   "macro_ci95": [
+    0.39723345326732584,
+    0.6231314626840411
+   ],
+   "by": {
+    "eco": {
+     "gradle": {
+      "n": 66,
+      "advice_solvable": 35
+     },
+     "maven": {
+      "n": 106,
+      "advice_solvable": 44
+     },
+     "npm": {
+      "n": 57,
+      "advice_solvable": 30
+     },
+     "pip": {
+      "n": 18,
+      "advice_solvable": 6
+     },
+     "poetry": {
+      "n": 42,
+      "advice_solvable": 13
+     },
+     "yarn": {
+      "n": 18,
+      "advice_solvable": 16
+     }
+    },
+    "jump": {
+     "major": {
+      "n": 118,
+      "advice_solvable": 30
+     },
+     "minor": {
+      "n": 132,
+      "advice_solvable": 76
+     },
+     "patch": {
+      "n": 57,
+      "advice_solvable": 38
+     }
+    },
+    "path": {
+     "direct": {
+      "n": 195,
+      "advice_solvable": 105
+     },
+     "transitive-only": {
+      "n": 112,
+      "advice_solvable": 39
+     }
+    },
+    "declaration": {
+     "declared": {
+      "n": 231,
+      "advice_solvable": 123
+     },
+     "managed": {
+      "n": 76,
+      "advice_solvable": 21
+     }
+    }
+   },
+   "fail_first_reason": {
+    "deps-unresolved": 54,
+    "vuln-not-cleared": 77,
+    "tests-regressed": 15,
+    "build-broken": 16,
+    "verification-scan-failed": 1
+   },
+   "fail_cause": {
+    "target-unresolvable": 31,
+    "pin-overridden": 7,
+    "tests-regressed": 15,
+    "build-broken": 16,
+    "vuln-not-cleared": 71,
+    "install-step-broken": 2,
+    "scan-failed": 1,
+    "lockfile-rejected": 18,
+    "unclassified": 2
+   },
+   "fail_cause_by_declaration": {
+    "declared": {
+     "target-unresolvable": 31,
+     "pin-overridden": 7,
+     "tests-regressed": 14,
+     "build-broken": 14,
+     "vuln-not-cleared": 19,
+     "install-step-broken": 2,
+     "scan-failed": 1,
+     "lockfile-rejected": 18,
+     "unclassified": 2
+    },
+    "managed": {
+     "build-broken": 2,
+     "vuln-not-cleared": 52,
+     "tests-regressed": 1
+    }
+   },
+   "pin_overridden": [
+    "airbnb-knowledge-repo: gitpython",
+    "airbnb-knowledge-repo: jinja2",
+    "airbnb-knowledge-repo: markdown",
+    "airbnb-knowledge-repo: nbconvert",
+    "airbnb-knowledge-repo: pygments",
+    "airbnb-knowledge-repo: weasyprint",
+    "airbnb-knowledge-repo: werkzeug"
+   ],
+   "bump_not_applied": 0,
+   "excluding": {
+    "repos": [
+     "kutia-software-company-express-typescript-starter"
+    ],
+    "n": 289,
+    "advice_solvable": 144
+   }
+  },
+  "policies": {
+   "exact": 144,
+   "min": 144,
+   "either": 145,
+   "python_tasks": 60,
+   "python_missing_from_min": 0,
+   "python": {
+    "both": 18,
+    "exact_only": 1,
+    "min_only": 1,
+    "neither": 40
+   }
+  },
+  "arms": {
+   "evo-remediation-agent": {
+    "n": 307,
+    "unpaired": 0,
+    "unpaired_tasks": [],
+    "both": 143,
+    "regression": 1,
+    "value_add": 134,
+    "neither": 29,
+    "value_add_tests": {
+     "modified": 35,
+     "untouched": 99
+    },
+    "by_declaration": {
+     "declared": {
+      "both": 122,
+      "regression": 1,
+      "value_add": 87,
+      "neither": 21
+     },
+     "managed": {
+      "both": 21,
+      "regression": 0,
+      "value_add": 47,
+      "neither": 8
+     }
+    },
+    "pass_on_advice_solvable": 0.9930555555555556,
+    "pass_on_other": 0.8220858895705522,
+    "macro_advice_solvable": 0.9966329966329965,
+    "macro_advice_solvable_ci95": [
+     0.9898989898989898,
+     1.0
+    ],
+    "macro_other": 0.8697811447811448,
+    "macro_other_ci95": [
+     0.7909069865319865,
+     0.940239898989899
+    ],
+    "mcnemar_exact_p": 6.244813738743402e-39,
+    "regressions": [
+     {
+      "case": "santiq-bulletproof-nodejs",
+      "label": "package-lock.json: agenda@3.1.0 -> agenda@4.0.0",
+      "reasons": [
+       "build-broken"
+      ],
+      "category": "other",
+      "landed": "4.4.0",
+      "off_target": true
+     }
+    ]
+   },
+   "claude-code-snyk-scan": {
+    "n": 307,
+    "unpaired": 0,
+    "unpaired_tasks": [],
+    "both": 138,
+    "regression": 6,
+    "value_add": 100,
+    "neither": 63,
+    "value_add_tests": {
+     "modified": 17,
+     "untouched": 83
+    },
+    "by_declaration": {
+     "declared": {
+      "both": 119,
+      "regression": 4,
+      "value_add": 58,
+      "neither": 50
+     },
+     "managed": {
+      "both": 19,
+      "regression": 2,
+      "value_add": 42,
+      "neither": 13
+     }
+    },
+    "pass_on_advice_solvable": 0.9583333333333334,
+    "pass_on_other": 0.6134969325153374,
+    "macro_advice_solvable": 0.9860357965621123,
+    "macro_advice_solvable_ci95": [
+     0.9680311890838207,
+     1.0
+    ],
+    "macro_other": 0.6466465732594764,
+    "macro_other_ci95": [
+     0.5183634055609863,
+     0.7681164467253176
+    ],
+    "mcnemar_exact_p": 4.467940297571179e-23,
+    "regressions": [
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-aws-s3/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.19",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-fluentd/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.19",
+      "off_target": true
+     },
+     {
+      "case": "santiq-bulletproof-nodejs",
+      "label": "package-lock.json: jsonwebtoken@8.5.1 -> jsonwebtoken@9.0.0",
+      "reasons": [
+       "build-broken"
+      ],
+      "category": "other",
+      "landed": "9.0.3",
+      "off_target": true
+     },
+     {
+      "case": "santiq-bulletproof-nodejs",
+      "label": "package-lock.json: lodash@4.17.21 -> lodash@4.18.1",
+      "reasons": [
+       "deps-unresolved"
+      ],
+      "category": "other",
+      "landed": "4.17.23",
+      "off_target": true
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: org.springframework.boot:spring-boot-starter-json@3.5.16 -> org.springframework.boot:spring-boot-starter-json@4.0.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-i18n/build.gradle.kts: org.springframework.boot:spring-boot-starter-json@3.5.16 -> org.springframework.boot:spring-boot-starter-json@4.0.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     }
+    ]
+   },
+   "claude-code-unaided": {
+    "n": 307,
+    "unpaired": 0,
+    "unpaired_tasks": [],
+    "both": 124,
+    "regression": 20,
+    "value_add": 59,
+    "neither": 104,
+    "value_add_tests": {
+     "modified": 11,
+     "untouched": 48
+    },
+    "by_declaration": {
+     "declared": {
+      "both": 111,
+      "regression": 12,
+      "value_add": 39,
+      "neither": 69
+     },
+     "managed": {
+      "both": 13,
+      "regression": 8,
+      "value_add": 20,
+      "neither": 35
+     }
+    },
+    "pass_on_advice_solvable": 0.8611111111111112,
+    "pass_on_other": 0.3619631901840491,
+    "macro_advice_solvable": 0.9179514442672337,
+    "macro_advice_solvable_ci95": [
+     0.8593655856813752,
+     0.9683501683501684
+    ],
+    "macro_other": 0.41272672966221347,
+    "macro_other_ci95": [
+     0.28763624144672534,
+     0.5432843895948734
+    ],
+    "mcnemar_exact_p": 1.2967077325175125e-05,
+    "regressions": [
+     {
+      "case": "alphagov-pay-adminusers",
+      "label": "pom.xml: org.liquibase:liquibase-core@4.16.0 -> org.liquibase:liquibase-core@4.21.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "4.17.0",
+      "off_target": true
+     },
+     {
+      "case": "camunda-community-hub-camunda-platform-7-mockito",
+      "label": "pom.xml: io.holunda.data:camunda-bpm-data@1.2.7 -> io.holunda.data:camunda-bpm-data@1.6.1",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "camunda-community-hub-camunda-platform-7-mockito",
+      "label": "pom.xml: org.springframework:spring-context@5.3.23 -> org.springframework:spring-context@7.0.9",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "6.2.19",
+      "off_target": true
+     },
+     {
+      "case": "canva-public-js2nix",
+      "label": "yarn.lock: node-gyp@9.1.0 -> node-gyp@12.3.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "11.5.0",
+      "off_target": true
+     },
+     {
+      "case": "fmtn-a",
+      "label": "pom.xml: ch.qos.logback:logback-classic@1.4.7 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.38",
+      "off_target": true
+     },
+     {
+      "case": "fmtn-a",
+      "label": "pom.xml: org.apache.activemq:activemq-client@5.18.1 -> org.apache.activemq:activemq-client@5.19.8",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "5.18.7",
+      "off_target": true
+     },
+     {
+      "case": "internetofwater-nldi-services",
+      "label": "pom.xml: org.postgresql:postgresql@42.3.7 -> org.postgresql:postgresql@42.7.12",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "42.7.8",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-aws-s3/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.38",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-core/build.gradle: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.38",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-fluentd/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.25",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-fluentd-ext/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.38",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-treasuredata/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.25",
+      "off_target": true
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: ch.qos.logback:logback-core@1.5.34 -> ch.qos.logback:logback-core@1.5.36",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.35",
+      "off_target": true
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: com.fasterxml.jackson.core:jackson-core@2.21.4 -> com.fasterxml.jackson.core:jackson-core@2.21.7",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "2.22.2",
+      "off_target": true
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: org.springframework.boot:spring-boot-starter-json@3.5.16 -> org.springframework.boot:spring-boot-starter-json@4.0.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: org.springframework:spring-expression@6.2.19 -> org.springframework:spring-expression@7.0.9",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-i18n/build.gradle.kts: com.fasterxml.jackson.core:jackson-core@2.21.4 -> com.fasterxml.jackson.core:jackson-core@2.21.7",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-i18n/build.gradle.kts: org.springframework.boot:spring-boot-starter-json@3.5.16 -> org.springframework.boot:spring-boot-starter-json@4.0.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-i18n/build.gradle.kts: org.springframework:spring-expression@6.2.19 -> org.springframework:spring-expression@7.0.9",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tryghost-ghost",
+      "label": "package-lock.json: @tryghost/errors@1.3.2 -> @tryghost/errors@3.0.1",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "2.0.0",
+      "off_target": true
+     }
+    ]
+   }
+  },
+  "arms_vs_either": {
+   "evo-remediation-agent": {
+    "n": 307,
+    "unpaired": 0,
+    "unpaired_tasks": [],
+    "both": 144,
+    "regression": 1,
+    "value_add": 133,
+    "neither": 29,
+    "value_add_tests": {
+     "modified": 35,
+     "untouched": 98
+    },
+    "by_declaration": {
+     "declared": {
+      "both": 123,
+      "regression": 1,
+      "value_add": 86,
+      "neither": 21
+     },
+     "managed": {
+      "both": 21,
+      "regression": 0,
+      "value_add": 47,
+      "neither": 8
+     }
+    },
+    "pass_on_advice_solvable": 0.993103448275862,
+    "pass_on_other": 0.8209876543209876,
+    "macro_advice_solvable": 0.9966329966329965,
+    "macro_advice_solvable_ci95": [
+     0.9898989898989898,
+     1.0
+    ],
+    "macro_other": 0.8657118055555555,
+    "macro_other_ci95": [
+     0.7853276909722221,
+     0.9383723958333333
+    ],
+    "mcnemar_exact_p": 1.2397791981328814e-38,
+    "regressions": [
+     {
+      "case": "santiq-bulletproof-nodejs",
+      "label": "package-lock.json: agenda@3.1.0 -> agenda@4.0.0",
+      "reasons": [
+       "build-broken"
+      ],
+      "category": "other",
+      "landed": "4.4.0",
+      "off_target": true
+     }
+    ]
+   },
+   "claude-code-snyk-scan": {
+    "n": 307,
+    "unpaired": 0,
+    "unpaired_tasks": [],
+    "both": 139,
+    "regression": 6,
+    "value_add": 99,
+    "neither": 63,
+    "value_add_tests": {
+     "modified": 17,
+     "untouched": 82
+    },
+    "by_declaration": {
+     "declared": {
+      "both": 120,
+      "regression": 4,
+      "value_add": 57,
+      "neither": 50
+     },
+     "managed": {
+      "both": 19,
+      "regression": 2,
+      "value_add": 42,
+      "neither": 13
+     }
+    },
+    "pass_on_advice_solvable": 0.9586206896551724,
+    "pass_on_other": 0.6111111111111112,
+    "macro_advice_solvable": 0.9860357965621123,
+    "macro_advice_solvable_ci95": [
+     0.9680311890838207,
+     1.0
+    ],
+    "macro_other": 0.6356042786738352,
+    "macro_other_ci95": [
+     0.5026895021281362,
+     0.7606770833333333
+    ],
+    "mcnemar_exact_p": 8.435279808627725e-23,
+    "regressions": [
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-aws-s3/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.19",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-fluentd/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.19",
+      "off_target": true
+     },
+     {
+      "case": "santiq-bulletproof-nodejs",
+      "label": "package-lock.json: jsonwebtoken@8.5.1 -> jsonwebtoken@9.0.0",
+      "reasons": [
+       "build-broken"
+      ],
+      "category": "other",
+      "landed": "9.0.3",
+      "off_target": true
+     },
+     {
+      "case": "santiq-bulletproof-nodejs",
+      "label": "package-lock.json: lodash@4.17.21 -> lodash@4.18.1",
+      "reasons": [
+       "deps-unresolved"
+      ],
+      "category": "other",
+      "landed": "4.17.23",
+      "off_target": true
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: org.springframework.boot:spring-boot-starter-json@3.5.16 -> org.springframework.boot:spring-boot-starter-json@4.0.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-i18n/build.gradle.kts: org.springframework.boot:spring-boot-starter-json@3.5.16 -> org.springframework.boot:spring-boot-starter-json@4.0.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     }
+    ]
+   },
+   "claude-code-unaided": {
+    "n": 307,
+    "unpaired": 0,
+    "unpaired_tasks": [],
+    "both": 125,
+    "regression": 20,
+    "value_add": 58,
+    "neither": 104,
+    "value_add_tests": {
+     "modified": 11,
+     "untouched": 47
+    },
+    "by_declaration": {
+     "declared": {
+      "both": 112,
+      "regression": 12,
+      "value_add": 38,
+      "neither": 69
+     },
+     "managed": {
+      "both": 13,
+      "regression": 8,
+      "value_add": 20,
+      "neither": 35
+     }
+    },
+    "pass_on_advice_solvable": 0.8620689655172413,
+    "pass_on_other": 0.35802469135802467,
+    "macro_advice_solvable": 0.9179514442672337,
+    "macro_advice_solvable_ci95": [
+     0.8593655856813752,
+     0.9683501683501684
+    ],
+    "macro_other": 0.3943744399641577,
+    "macro_other_ci95": [
+     0.2719596354166667,
+     0.5256257000448029
+    ],
+    "mcnemar_exact_p": 1.9519090743641074e-05,
+    "regressions": [
+     {
+      "case": "alphagov-pay-adminusers",
+      "label": "pom.xml: org.liquibase:liquibase-core@4.16.0 -> org.liquibase:liquibase-core@4.21.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "4.17.0",
+      "off_target": true
+     },
+     {
+      "case": "camunda-community-hub-camunda-platform-7-mockito",
+      "label": "pom.xml: io.holunda.data:camunda-bpm-data@1.2.7 -> io.holunda.data:camunda-bpm-data@1.6.1",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "camunda-community-hub-camunda-platform-7-mockito",
+      "label": "pom.xml: org.springframework:spring-context@5.3.23 -> org.springframework:spring-context@7.0.9",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "6.2.19",
+      "off_target": true
+     },
+     {
+      "case": "canva-public-js2nix",
+      "label": "yarn.lock: node-gyp@9.1.0 -> node-gyp@12.3.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "11.5.0",
+      "off_target": true
+     },
+     {
+      "case": "fmtn-a",
+      "label": "pom.xml: ch.qos.logback:logback-classic@1.4.7 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.38",
+      "off_target": true
+     },
+     {
+      "case": "fmtn-a",
+      "label": "pom.xml: org.apache.activemq:activemq-client@5.18.1 -> org.apache.activemq:activemq-client@5.19.8",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "5.18.7",
+      "off_target": true
+     },
+     {
+      "case": "internetofwater-nldi-services",
+      "label": "pom.xml: org.postgresql:postgresql@42.3.7 -> org.postgresql:postgresql@42.7.12",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "42.7.8",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-aws-s3/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.38",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-core/build.gradle: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.38",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-fluentd/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.25",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-fluentd-ext/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.38",
+      "off_target": true
+     },
+     {
+      "case": "komamitsu-fluency",
+      "label": "fluency-treasuredata/build.gradle.kts: ch.qos.logback:logback-classic@1.3.14 -> ch.qos.logback:logback-classic@1.6.3",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.25",
+      "off_target": true
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: ch.qos.logback:logback-core@1.5.34 -> ch.qos.logback:logback-core@1.5.36",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "1.5.35",
+      "off_target": true
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: com.fasterxml.jackson.core:jackson-core@2.21.4 -> com.fasterxml.jackson.core:jackson-core@2.21.7",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "2.22.2",
+      "off_target": true
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: org.springframework.boot:spring-boot-starter-json@3.5.16 -> org.springframework.boot:spring-boot-starter-json@4.0.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-freemarker/build.gradle.kts: org.springframework:spring-expression@6.2.19 -> org.springframework:spring-expression@7.0.9",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-i18n/build.gradle.kts: com.fasterxml.jackson.core:jackson-core@2.21.4 -> com.fasterxml.jackson.core:jackson-core@2.21.7",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-i18n/build.gradle.kts: org.springframework.boot:spring-boot-starter-json@3.5.16 -> org.springframework.boot:spring-boot-starter-json@4.0.0",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tokuhirom-java-handbook",
+      "label": "samples/spring-i18n/build.gradle.kts: org.springframework:spring-expression@6.2.19 -> org.springframework:spring-expression@7.0.9",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": null,
+      "off_target": false
+     },
+     {
+      "case": "tryghost-ghost",
+      "label": "package-lock.json: @tryghost/errors@1.3.2 -> @tryghost/errors@3.0.1",
+      "reasons": [
+       "vuln-not-cleared"
+      ],
+      "category": null,
+      "landed": "2.0.0",
+      "off_target": true
+     }
+    ]
+   }
+  }
+ }
+}

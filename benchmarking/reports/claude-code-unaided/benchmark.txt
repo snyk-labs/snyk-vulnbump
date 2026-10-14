@@ -1,0 +1,68 @@
+case                                                 claude-code-unaided/single-upgrade
+---------------------------------------------------------------------------------------
+airbnb-knowledge-repo                                                             10/10
+alphagov-pay-adminusers                                                           10/14
+alphagov-pay-cardid                                                                 4/6
+assertj-assertj-guava                                                               2/2
+assertj-assertj-vavr                                                                0/1
+atlassian-react-beautiful-dnd                                                       1/1
+camunda-community-hub-camunda-platform-7-mockito                                    2/5
+canva-public-js2nix                                                                 2/3
+citerus-dddsample-core                                                             4/11
+ddedalus-poetry-auto-export                                                         8/8
+encode-django-rest-framework                                                        3/3
+ewjoachim-poetry-to-pre-commit                                                      3/9
+expressjs-generator                                                                 4/4
+fmtn-a                                                                              5/8
+goparrot-geocoder                                                                   1/1
+hagopj13-node-express-boilerplate                                                 13/14
+hantsy-nestjs-rest-sample                                                           6/7
+hisatri-lrcapi                                                                      4/5
+informatici-openhospital-core                                                      5/14
+internetofwater-nldi-services                                                       2/7
+ixartz-serverless-boilerplate-express-typescript                                    1/1
+jericks-geoserver-shell                                                             1/1
+knaufk-flink-faker                                                                  1/2
+komamitsu-fluency                                                                 14/19
+kutia-software-company-express-typescript-starter                                  5/18
+lettuce-io-lettuce-core                                                             4/7
+lookfirst-sardine                                                                   2/2
+pac4j-dropwizard-pac4j                                                              0/3
+pkiraly-qa-catalogue                                                               8/12
+predict-idlab-plotly-resampler                                                     2/10
+qdrant-qdrant-client                                                               3/12
+qqxx6661-log-record                                                                 5/9
+reactivex-rxjava                                                                    1/1
+restify-node-restify                                                                3/3
+retest-recheck-cli                                                                  0/1
+santiq-bulletproof-nodejs                                                          9/12
+socketio-socket-io                                                                  1/1
+tediousjs-node-mssql                                                                1/1
+tokuhirom-java-handbook                                                           23/46
+tryghost-ghost                                                                      4/5
+vpulim-node-soap                                                                    3/4
+wemake-services-wemake-python-styleguide                                            2/3
+wmaarts-pitest-mutation-testing-elements-plugin                                     1/1
+---------------------------------------------------------------------------------------
+PASS                                                                            183/307
+vulns cleared                                                                 1503/2066
+remaining c/h/m/l                                                          0/282/223/58
+new vulns                                                                           797
+claimed not fixed                                                                    70
+PASS macro [95% CI]                                                    0.68 [0.58,0.78]
+cleared macro [95% CI]                                                 0.81 [0.72,0.89]
+tests modified                                                                       22
+.snyk modified                                                                        0
+unrelated bumps                                                                      34
+vulns moved                                                                          10
+harness errors                                                                        0
+rescan failed                                                                         2
+new projects                                                                          0
+tokens                                                                       45,798.0K*
+(PASS = deps resolve, snyk test OK, vulns cleared, build OK, baseline-passing tests still pass; TIME_OUT = hit the case budget; one attempt per upgrade)
+(remaining = fixable vulns not cleared, failed rescans included; new = vulns in baseline projects the rescan added, unknown for failed rescans; moved = remaining vulns the agent moved onto a new direct dependency)
+(macro = mean of per-repo rates; CI = 95% percentile bootstrap, clustered by repo; harness errors are excluded from every rate)
+(* Claude Code input tokens incl. cache reads and cache creation; compare cost, not tokens)
+
+control: claude-code@2.1.289  |  model: claude-sonnet-5-5  |  turn budget: evo-remediation-agent: 100/fix (+10 breakability), fresh per retry round, own setup budget; claude: 110 x upgrades, pooled  |  strict collateral: False
+  claude-code-unaided/single-upgrade: snyk False

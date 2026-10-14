@@ -1,0 +1,27 @@
+[project]
+name = "vulnbump"
+version = "0.0.0"
+description = "VulnBump: a benchmark for vulnerability-driven dependency upgrades in real repositories."
+license = "Apache-2.0"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.13,<3",
+    "pyyaml>=6,<7",
+    "matplotlib>=3.8,<4",
+]
+
+[dependency-groups]
+analysis = [
+    "scipy>=1.11,<2",
+]
+# Unit tests for the harness's own pure logic (plan parsing, collateral
+# classification, verdicts). These run without docker, a snyk token, or an
+# LLM key.
+dev = ["pytest>=8,<9"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

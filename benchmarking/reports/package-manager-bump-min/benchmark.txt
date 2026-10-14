@@ -1,0 +1,32 @@
+case                                        package-manager-bump-min/single-upgrade
+-----------------------------------------------------------------------------------
+airbnb-knowledge-repo                                                          0/10
+ddedalus-poetry-auto-export                                                     8/8
+encode-django-rest-framework                                                    2/3
+ewjoachim-poetry-to-pre-commit                                                  1/9
+hisatri-lrcapi                                                                  4/5
+predict-idlab-plotly-resampler                                                 2/10
+qdrant-qdrant-client                                                           0/12
+wemake-services-wemake-python-styleguide                                        2/3
+-----------------------------------------------------------------------------------
+PASS                                                                          19/60
+vulns cleared                                                               124/293
+remaining c/h/m/l                                                         0/98/64/7
+new vulns                                                                         0
+claimed not fixed                                                                 6
+PASS macro [95% CI]                                                0.43 [0.16,0.70]
+cleared macro [95% CI]                                             0.53 [0.19,0.87]
+tests modified                                                                    0
+.snyk modified                                                                    0
+unrelated bumps                                                                   0
+vulns moved                                                                       0
+harness errors                                                                    0
+rescan failed                                                                     4
+new projects                                                                      0
+tokens                                                                         0.0K
+(PASS = deps resolve, snyk test OK, vulns cleared, build OK, baseline-passing tests still pass; TIME_OUT = hit the case budget; one attempt per upgrade)
+(remaining = fixable vulns not cleared, failed rescans included; new = vulns in baseline projects the rescan added, unknown for failed rescans; moved = remaining vulns the agent moved onto a new direct dependency)
+(macro = mean of per-repo rates; CI = 95% percentile bootstrap, clustered by repo; harness errors are excluded from every rate)
+
+control: claude-code@2.1.289  |  model: (tool default)  |  turn budget: evo-remediation-agent: 100/fix (+10 breakability), fresh per retry round, own setup budget; claude: 110 x upgrades, pooled  |  strict collateral: False
+  package-manager-bump-min/single-upgrade: snyk False

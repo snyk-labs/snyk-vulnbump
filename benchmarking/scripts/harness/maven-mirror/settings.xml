@@ -1,0 +1,36 @@
+<settings>
+  <mirrors>
+    <mirror>
+      <id>maven-cache</id>
+      <mirrorOf>central</mirrorOf>
+      <url>${env.MAVEN_MIRROR_URL}</url>
+    </mirror>
+  </mirrors>
+  <!-- Maven only warns on a checksum mismatch and keeps the bad file, and -q
+       hides the warning; a corrupt POM then silently drops its transitive
+       dependencies. Fail instead. -->
+  <profiles>
+    <profile>
+      <id>strict-checksums</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo.maven.apache.org/maven2</url>
+          <releases><checksumPolicy>fail</checksumPolicy></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>https://repo.maven.apache.org/maven2</url>
+          <releases><checksumPolicy>fail</checksumPolicy></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>strict-checksums</activeProfile>
+  </activeProfiles>
+</settings>
